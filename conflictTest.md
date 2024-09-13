@@ -1,3 +1,3 @@
 Here is the conflict Test file
 
-It works great!
+It works great! Hello!
