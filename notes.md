@@ -12,4 +12,10 @@
 
 2. SSH into server
     - ssh -i[key pair file] ubuntu@[ip address]
+
+3. HTML
+    - For images, it is best to have them saved in a repository and use the reference links so it does not take as long to load
+    - Always include an alt for images (for accessibility)
+    - Structure is like a tree
+    - Be sure to close out all tags
     
