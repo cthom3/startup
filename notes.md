@@ -18,4 +18,5 @@
     - Always include an alt for images (for accessibility)
     - Structure is like a tree
     - Be sure to close out all tags
+    - Spans hightlight specific text or sections
     
