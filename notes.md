@@ -19,4 +19,8 @@
     - Structure is like a tree
     - Be sure to close out all tags
     - Spans hightlight specific text or sections
-    
+
+4. Simon HTML
+    - need a deploy file to be able to send to website
+    - include navigation on every page
+    - Use Live Server to view so you can debug
