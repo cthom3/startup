@@ -180,6 +180,8 @@
     - float (moves element to left or right and allows inline elements to wray around) (ex. aside {float:right; } stays of right side while text flows around)
     - Media queries (@media) dynamically detects size and orientation, can use it too see which side is longest on device so we know how to orient) or to know when to not display some items
     - Grid (display:grid; ) (fr-->gractional unit of parentss total width)
-    - Flexbox (
+    - Flexbox (partition application into areas that move around as window resized or orientation changes) (display: flex; flex-direction:column or row; flex:1(one-fractional unit)) (row-->side by side, column-->on top of each other)
+    - Frameworks (tailwind-->newer, apply to specific HTML elements--> mostly in HTML file) (bootstrap--> (include in head <link href="", rel="stylesheet", integrity="", crossorigin-"anonymous" />) (include at end of body element (incorporate javascript module) <script src="" integrity="" crossorigin="anonymous"></script>)
+    - Debugging
 14.   
 15. 
