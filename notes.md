@@ -241,6 +241,43 @@
     - Unicode-->must internationalize (uses sequence of 16-bit unsigned integers)
     - String functions (length, indexOf()-starting index of given substring, split()-split into array on given delimiter, startsWith()-returns boolean, endsWith()-returns boolean, toLowerCase()
 15. JavaScript Functions
+    - first class object-->assigned name, passed as parameter, return result, referenced
+    - if don't give value of parameter, undefined when function executes
+    - can define default value
+    - anonymous functions-->assign to variable w/o giving it a name
+    - inner functions--> declare inside other functions, modularize code w/o exposing private details
+16. JavaScript Arrow Function
+    - first order objects
+    - anonymous functions clutter--> more compact-->arrow syntax (use => instead of function keyword)
+    - ex. ()=>3; (takes no parameters and always returns 3)
+    - example of difference:
+           // standard function syntax
+            a.sort(function (v1, v2) {
+              return v1 - v2;
+            });
+            // arrow function syntax
+            a.sort((v1, v2) => v1 - v2);
+    - arrow functions cannot be used for constructors or iterator generators
+    - return keyword is optional if no curly braces and only has 1 expression-->automatically returned
+    - if curly braces-->acts like standard function and needs return statement
+    - inherits this pointer from scope (forms closure)
+    - closure allows function to continue referencing creation scope even if it has passed out of scope (returns values from scope it was created not current values of the variables)
+    - example (debounce (timewindow, window function to call in this timeframe)-->resets page so expensive calculations are not called too much
+17. JavaScript Array
+    - sequence of other objects and primitieves
+    - zero based index
+    - static functions (push (add to end), pop (remove from end), slice (subarray), sort, values (interator for use in for of loop), find (first item satisfied by test function), forEach (function on each item), reduce (reduce array to single item), map (function to map array to new array), filter (function to remove items), every (function to see if all match), some (function to see if any match)
+18. JSON
+    - JavaScript Object Notation
+    - simple, effective way to share and store data, easily convertible to and from JavaScript objects
+    - document contains one of the data types (string (""), number, boolean, array[,], object ({"a":1}), null
+    - commonly contains object (0 or more key value pairs), key is always a string and object has to be a data type listed above
+    - encoded with UTF-8
+    - convert to and from JSON with JSON.parse and (JSON.stringify (to))
+    - JSON cannot represent JavaScript undefined obj so gets dropped in conversion
+19. JavaScript Object and Classes
     - 
-16.     
-17. 
+20. JavaScript Regular expressions
+    - 
+21.      
+22. 
