@@ -120,13 +120,66 @@
     - output (output of input)
     - meter (display value with a known range)
     - index.html default display for web browser
+    - external media (img, audio, video)
     - For images, it is best to have them saved in a repository and use the reference links so it does not take as long to load
     - Always include an alt for images (for accessibility)
+    - images (<img src="_" alt="_")
+    - audio (src, controls or it autoplays and loops)
+    - video (src, controls or autoplay, crossorgin="anonymous" (when requssting files from different domain)
+    - internal media (svg, canvas)
+    - Scalable Vector Graphics (SVG)
+    - Canvas (2D drawing/animation)
     - Structure is like a tree
     - Be sure to close out all tags
     - Spans hightlight specific text or sections
-
 10. Simon HTML
     - need a deploy file to be able to send to website
     - include navigation on every page
     - Use Live Server to view so you can debug
+11. CSS
+    - Cascading Style Sheets (style html)
+    - responseive to actions of user and device rendered on
+    - animate page, deploy custom fonts, respond to user actions, dynamically alter entire layout based on size of device
+    - rulesets --> selector, declarations, property, value
+    - Example (p (selector){color (property): (declaration) green (value); (rule)}
+    - Ways to associate CSS with HTML
+          1. Style attribute in specific HTML element
+          2. Style element (<style>) within HTML document
+          3. HTML link to create hyperlink ref to external file with CSS rules (<link rel="stylesheet" href="styles.css" />) ** preferred way
+    - Lowest level overrides higher declaration
+    - Box model (inner to outer--> content, padding, border, margin)
+    - Selectors (* to select all)
+    - descendant combinator (ex. section h2)--> has to be a descendent of previous item
+    - child-->list of direct children (ex. section > p)
+    - general sibling --> list of siblings (ex. div ~ p)
+    - adjacent sibling --> list of adjacent sibling (ex. div + p)
+    - Class selector (.classname {})
+    - Can combine with element name (ex. p.classname{})
+    - ID selector (unique for a specific element) (ex. #id {})
+    - Attribute selector (ex. p[class='summary'] {} or a[href] {})
+    - Pseudo selector--> selects basked on position, hyperlick visit, or mouse interactions (ex. section:hover {})
+    - CSS Declarations (property=value)
+    - Units for values (pixels (px) or inches (in) or % of parent element or % of minimum viewport dimension (vmin) or multiplier of size of letter m in root font (rem), pt(number of points 1/72 in), cm (centimenters), em (multiplier of width of letter m in parent font), ex (height of element font), vw, vh (viewport width or height), vmax (%of viewportlarger dimension)
+    - Color: keyword (red), RGB (#00FFAA22 or #0FA2), rgb function (rgb(128,255,128,0.5) with opacity as last thing), HSL (hsl(180,30%,90%,0.5) hue,saturation (how gray), light (how bright))
+    - font-family to import fonts, list several in order of desire b/c some systems don't have some types
+    - font families--> serif, sans-serif, fixed, symbol (emojis or arrows)
+    - @font-face {} to load one you provide
+    - load from font provider (@import url()) using Good Font Service
+    - Animation--> use animation properties, define keyframes (how it looks at different times)
+    - in element reference animation (animation-name and animation-duration)
+    - @keyframes nameofanimation { from {} to{} }
+    - can add % of the way through stops in between from and to 
+12. Responsive Design
+    - change how HTML element displayed
+    - none (don't display)
+    - block (width of parent element)
+    - inline (width as big as contents)
+    - flex (flexible orientation)
+    - grid (grid orientation)
+    - include meta tag in head element so mobile browser scaling does not get in the way (<meta name="viewport" content="width=device-width,initial-scale=1" />
+    - float (moves element to left or right and allows inline elements to wray around) (ex. aside {float:right; } stays of right side while text flows around)
+    - Media queries (@media) dynamically detects size and orientation, can use it too see which side is longest on device so we know how to orient) or to know when to not display some items
+    - Grid (display:grid; ) (fr-->gractional unit of parentss total width)
+    - Flexbox (
+14.   
+15. 
