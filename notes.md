@@ -182,6 +182,65 @@
     - Grid (display:grid; ) (fr-->gractional unit of parentss total width)
     - Flexbox (partition application into areas that move around as window resized or orientation changes) (display: flex; flex-direction:column or row; flex:1(one-fractional unit)) (row-->side by side, column-->on top of each other)
     - Frameworks (tailwind-->newer, apply to specific HTML elements--> mostly in HTML file) (bootstrap--> (include in head <link href="", rel="stylesheet", integrity="", crossorigin-"anonymous" />) (include at end of body element (incorporate javascript module) <script src="" integrity="" crossorigin="anonymous"></script>)
-    - Debugging
-14.   
-15. 
+    - Debugging (inspect, Elements tab, Styles pane)-->can change things directly in debugger
+    - flex to delimit header, main, and footer (responsive to different screen sizes)
+    - absolute position relative to parent elements
+14. JavaScript
+    - officially ECMAScript--> weakly typed language
+    - most used programming language (web servers and serverless functions)
+    - executed using an interpreter instead of compiling (very portable but allows for errors (only discovered when crashes during execution))
+    - console.log(___) outputs ot debugger console
+    - concatenate using +
+    - write functions (function name(variable){return variable+' ';}
+    - line comment //
+    - block comment /* */
+    - end statements with ;, code blocks/scope defined w/ {}
+    - console.time('demo time'); code; console.timeEnd('demo time');
+    - console.count(_);
+    - Adding to HTML
+          - src attribute of script element (reference js file)
+          - directly in HTML in script element (ex. write function here)
+    - onclick-->creates event listener for DOM events that call code in attribute value
+    - declare variables with let or const, never var
+    - primitive types: null (not assigned value), undefined (has not been defined), Boolean, number, bigInt (arbitrary magnitude), String, Symbol (unique value)
+    - object types: object (collection of properties represented by name-value pairs (ex. {a:3, b:'fish'}), function, date, array, map, JSON (lightweight data-interchange format (ex. {"a":3,"b":"fish"})
+    - operators: + (add), - (subtract), * (multiply), / (divide), === (equality), for strings (+ and ===)
+    - type conversions: weakly typed-->type changes when assigned new value or automatically converted in certain contexts (automatic converstion) (== less intuitive use === for strict inequality)
+    - examples (2 + '3';
+        // OUTPUT: '23'
+        2 * '3';
+        // OUTPUT: 6
+        [2] + [3];
+        // OUTPUT: '23'
+        true + null;
+        // OUTPUT: 1
+        true + undefined;
+        // OUTPUT: NaN)
+    - examples (1 == '1';
+        // OUTPUT: true
+        null == undefined;
+        // OUTPUT: true
+        '' == false;
+        // OUTPUT: true)
+      -examples (1 === '1';
+        // OUTPUT: false
+        null === undefined;
+        // OUTPUT: false
+        '' === false;
+        // OUTPUT: false)
+    - Conditionals (if, else, else if)
+    - ternary operator (ex. a===1? console.log(1) : console.log('not 1');)
+    - boolean operations (&&(and) || (or) ! (not))
+    - loops (for, for in, for of, while, do while, switch)
+    - for in (const name in obj-->prints out first part of each object, const name in array-->prints out the array index)
+    - for of (const val of arr-->print value at each index)
+    - break or continue also available
+    - string-->specified by ',", or ` (` are string literal that could have JavaScript evaluated in place and concatenated into string)
+    - string literal replacement specifier ${} use backticks
+    - use backticks to create multiline strings w/o having to use \n
+    - Unicode-->must internationalize (uses sequence of 16-bit unsigned integers)
+    - String functions (length, indexOf()-starting index of given substring, split()-split into array on given delimiter, startsWith()-returns boolean, endsWith()-returns boolean, toLowerCase()
+15. JavaScript Functions
+    - 
+16.     
+17. 
