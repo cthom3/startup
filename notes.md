@@ -276,6 +276,9 @@
     - convert to and from JSON with JSON.parse and (JSON.stringify (to))
     - JSON cannot represent JavaScript undefined obj so gets dropped in conversion
 19. JavaScript Object and Classes
+    - property name must be String or Symbol, value any type
+    - can be created with new operator (ex. const obj=new Object ({a:3});)
+    - This allows adding properties by simply referencing property name (can be done with obj.prop or obj['prop'])
     - 
 20. JavaScript Regular expressions
     - 
