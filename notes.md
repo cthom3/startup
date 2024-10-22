@@ -43,8 +43,8 @@
     - chmod +x deploy.sh (makes a script executable)
     - man (look up a command in the manual)
     - | (take output from left side and pass it to command on right)
-    - > (output to file, overwrite if exists)
-    - >> (output to file, append if exists)
+    - '>' (output to file, overwrite if exists)
+    - '>>' (output to file, append if exists)
     - CTRL-R (find previous commands)
     - CTRL-C (kill currently running command)
 4. Git Hub commands
