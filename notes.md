@@ -43,7 +43,7 @@
     - wget (downloads files from internet)
     - vim (VI oldest console editor)
     - nano (command line editor)
-    - chmod +x deploy.sh (makes a script executable)
+    - chmod +x deploy.sh (makes a script executable) (changes a file's mode bits to control the access rights to a file)
     - man (look up a command in the manual)
     - | (take output from left side and pass it to command on right)
     - '>' (output to file, overwrite if exists)
@@ -424,6 +424,7 @@
                 </html>
     - Use web framework bundler to generate web application distribution code, don't have to worry about differentiationg between scope-->will inject necessary syntax to connect-->bundler exposes ES module directly
 26. Document Object Model(DOM)
+    - <!DOCTYPE html> (directs browser to use relevant specifications when rendering the html)
     - object representation of HTML elements used to render display
     - can write programs that dynamically manipulate the HTML
     - browser provides access to DOM through global variable name (document) that points to root element of the DOM
@@ -433,6 +434,8 @@
     - elements implement DOM element interface (comes from DOM Node Interface)
     - DOM Element Inerface-->iterate child elements, access parent elements, manipulate element attributes
     - querySelectorAll (select elements)
+    - document.getElementById(id).style.color = __ (to change text color)
+    - document.querySelector(__).textContent= "" (to rewrite info)
     - can use document.querySelector();
     - textContent (contains all the elements text)
     - innerHTML (textual representation of elementss HTML content)
@@ -455,7 +458,7 @@
                 });
     - add event listeners directly  in HTML
     - example: <button onclick='alert("clicked")'>click me</button>
-27. Local Storage
+28. Local Storage
     - ability to persistently sotr and retrieve data on user's brower across user sessions and HTML page renderings
     - also cache when data cannot be obtained from the server
     - functions
@@ -465,7 +468,7 @@
     - clear()
     - local storage value must be string, number, or boolean
     - if want to store JavaScript object or array-->convert to JSON string with JSON.stringify() when inserted and convert back with JSON.parse()
-28. Promises
+29. Promises
     - rendering process of HTML executes on single thread
     - cannot take a long time to process JavaScript at beginning
     - use promise for long running executions
@@ -485,7 +488,8 @@
                     }
                   }, 10000);
                 });
-29. JavaScript Async/await
+      - if in promise, reject(false); catch and finally statements occur
+30. JavaScript Async/await
     - await wraps execution of promise (removing chain functions), blocks the promise state moves to fulfilled or throws exception if moves to rejected
     - set up this way: const coinToss = () => {
                           return new Promise((resolve, reject) => {
@@ -521,15 +525,15 @@
     - await then returns result of promise
     - await function();-->will return value from function
     - great for feching web API that returns JSON (resolve two promises--> network call and converting result to JSON) need to wait until first resolved)
-30. Debugging JavaScript
+31. Debugging JavaScript
     - simplest way--> console.log
     - use debugger console window to inspect variables
     - execute JavaScript directly in console window
     - browser debugger--> select source tab, select index.js, breakpoints, refresh (reload and pause on breakpoint)
-31. Node.js
+32. Node.js
     - application to deploy JavaScript outside browser
     - run on server as well
     - can power entire technology stack
     - ...
-32. 
 33. 
+34. 
