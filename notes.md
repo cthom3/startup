@@ -40,6 +40,7 @@
     - ping (check if website is up)
     - tracert (trace connections to a website)
     - dig (show DNS info for domain)
+    - chmod +x deploy.sh (makes a script executable)
     - man (look up a command in the manual)
     - | (take output from left side and pass it to command on right)
     - > (output to file, overwrite if exists)
