@@ -40,6 +40,9 @@
     - ping (check if website is up)
     - tracert (trace connections to a website)
     - dig (show DNS info for domain)
+    - wget (downloads files from internet)
+    - vim (VI oldest console editor)
+    - nano (command line editor)
     - chmod +x deploy.sh (makes a script executable)
     - man (look up a command in the manual)
     - | (take output from left side and pass it to command on right)
@@ -47,6 +50,10 @@
     - '>>' (output to file, append if exists)
     - CTRL-R (find previous commands)
     - CTRL-C (kill currently running command)
+    - port 443 (HTTPS)
+    - port 80 (HTTP)
+    - port 22 (secure shell communication)
+    - DNS (domain name system) associate with IP address (A record) other domains (CNAME records)
 4. Git Hub commands
     - git add 
     - git commit
