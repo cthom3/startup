@@ -347,7 +347,7 @@
     - throwing exceptions should only happen when something truly exceptional occurs
     - Fallbacks (return something even if something is temperarily unavailable)
 23. JavaScript Destructuring
-    - pulling indivitual items out o fexisting one
+    - pulling indivitual items out of existing one
     - done with arrays or objects
     - arrays it is assumed by position
     - for objects, explicitly specify
@@ -535,5 +535,19 @@
     - run on server as well
     - can power entire technology stack
     - ...
-33. 
-34. 
+33. Debugging Node.js
+    - 
+34. Web frameworks
+    - Simplify common patterns, provide common componenets, improve performance, increase device coverage
+    - tools to modularize code, create single page applications, simplify reactivity, support diverse hardware devices
+    - Some frameworks make new file formats that combine languages into one file (ex. React)
+    - focus on functional components rather than files
+    - 
+    - virtual DOM (shadow DOM), takes copyonly in memory, really fast, changes happen in here first (make new tree), finds diff between and then only changes the diff in web browser tree, constantly watching components to see what changes
+    - 
+35. React (JSX)
+    - Combines javascript and html (Babel talks between JSX to make JS)
+    - Use in Codepen if select Babel as JavaScript processor
+    - less html used within document
+36. 
+37. 
