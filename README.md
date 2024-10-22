@@ -13,7 +13,17 @@ Having home-cooked meals brings lots of comfort, but it can be difficult to keep
 
 ## Description:
 1. HTML: 
-    - Correct HTML structure. One page for login/create accout. One page for recipes with feedback.
+    - Home page --> includes placeholder for login
+    - Recipes page
+        - setup for recipes in sections (will be edited later to have section open up and collapse), currently shows breakfast open and other sections collapsed (this will be filled in from database in the future)
+        - images for recipes included
+        - Recipe as a hyperlink for now, opens in a new page
+        - Add recipe button but html in navigation bar for now until it is connects through JavaScript
+        - WebServer (3rd party service calls) picture placeholder
+        - Recommendations in navigation bar (this is where WebSocket data will go)
+    - About page --> application textual content
+    - All pages--> navigation bar
+    - Github directory attached in the footer
 2. CSS:
     - Style that allows for easy readability of recipes on various screens, complimentary color choices
 3. JavaScript: 
