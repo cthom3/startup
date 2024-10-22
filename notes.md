@@ -519,6 +519,9 @@
     - execute JavaScript directly in console window
     - browser debugger--> select source tab, select index.js, breakpoints, refresh (reload and pause on breakpoint)
 31. Node.js
-    - s
+    - application to deploy JavaScript outside browser
+    - run on server as well
+    - can power entire technology stack
+    - ...
 32. 
 33. 
