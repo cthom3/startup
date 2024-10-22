@@ -279,8 +279,246 @@
     - property name must be String or Symbol, value any type
     - can be created with new operator (ex. const obj=new Object ({a:3});)
     - This allows adding properties by simply referencing property name (can be done with obj.prop or obj['prop'])
-    - 
+    - Great for dynamically modifying and manipulating data with indeterminate structure (promises are also objects)
+    - Object-literals
+    - example: const obj = {
+                  a: 3,
+                  b: 'fish',
+                };
+    - Object functions (entries (returns key value pairs), keys, values)
+    - Constructor (function that returns an object)
+    - can be invoked with "new" operator
+    - this depends on scope (for an object, it is a pointer to the object)
+    - Classes-->reusable conmponent, explicit consstructor and assumed function declarations
+    - Example: class Person {
+                  constructor(name) {
+                    this.name = name;
+                  }
+                
+                  log() {
+                    console.log('My name is ' + this.name);
+                  }
+                }
+    - make properties and functions private by prefixing with #
+    - Inheritance: classes can be extended using extends keyword
+    - super function-->pararmeters that need to be passed to parent class
+    - super keyword--> explicitly access parent function
+    - example: class Person {
+                  constructor(name) {
+                    this.name = name;
+                  }
+                class Employee extends Person {
+                  constructor(name, position) {
+                    super(name);
+                    this.position = position;
+                  }
 20. JavaScript Regular expressions
-    - 
-21.      
-22. 
+    - textual pattern matcherss (find text in string so you can replace it or know it exists)
+    - create using class constructor or regular expression literal
+    - const objRegex = new RegExp('ab*', 'i');
+    - const literalRegex = /ab*/i;
+    - match, replace, search, split (accept regex)
+    - flags: g (global search), i (case-insensitive search))
+21. JavaScript Rest and Spread
+    - rest syntax (...numbers)
+    - call it with any number of parameters and automatically combined into array
+    - only last parameter can be made rest parameter
+    - allows variadic functions
+    - Spread (opposite of rest)
+    - takes iterable object and expands into function's parameters
+22. JavaScript Exceptions
+    - try catch and throw syntax
+    - throw exception, try and catch block, and finally if want
+    - example: try {
+              // normal execution code
+            } catch (err) {
+              // exception handling code
+            } finally {
+              // always called code
+            }
+    - throwing exceptions should only happen when something truly exceptional occurs
+    - Fallbacks (return something even if something is temperarily unavailable)
+23. JavaScript Destructuring
+    - pulling indivitual items out o fexisting one
+    - done with arrays or objects
+    - arrays it is assumed by position
+    - for objects, explicitly specify
+    - example: const o = { a: 1, b: 'animals', c: ['fish', 'cats'] };      
+                    const { a, c } = o;
+                    console.log(a, c);
+                    // OUTPUT 1, ['fish', 'cats']
+    - map names to new variables if wish
+    - give default values as well for missing ones
+    - can also reassign existing variables
+24. Scope
+    - Types of scope: global (visible to all code), module (visible to code running in module), function (visible within function), block (visible in block of code (inside {}))
+    - var used to be used but it ignores block scope (just assign new value in each function instead of declaring new variable within each section)
+    - this represents variable that points to object
+    - automatically declared
+    - reference this anywhere in JavaScript program
+    - value depends on context in which referenced
+        1. Global--> represents context for runtime environment (for browser-->browser window object)
+        2. Function--> referenced in a function-->refers to object that owns function (either object or gloablThis if function defined outside object), when running JavaScript strict mode--> global function's this variable is undefined 
+        3. Object--> referenced in object, refers to object
+        4. Example: 'use strict';
+                        // global scope
+                        console.log('global:', this);
+                        console.log('globalThis:', globalThis);
+                        // function scope for a global function
+                        function globalFunc() {
+                          console.log('globalFunctionThis:', this);
+                        }
+                        globalFunc();
+                        // object scope
+                        class ScopeTest {
+                          constructor() {
+                            console.log('objectThis:', this);
+                          }
+                          // function scope for an object function
+                          objectFunc() {
+                            console.log('objectFunctionThis:', this);
+                          }
+                        }
+                        new ScopeTest().objectFunc();
+                        Running the above code in a browser results in the following.
+                        global: Window
+                        globalThis: Window
+                        globalFunctionThis: undefined
+                        objectThis: ScopeTest
+                        objectFunctionThis: ScopeTest
+                        Note that if we were not using JavaScript strict mode then globalFunctionThis would refer to Window.
+    - Closure-->function and its surrounding state
+    - whatever variables are accessible when function created are available inside the function
+    - true even if pass function outside scope of original creation
+    - function creates object with this pointer--> returns object
+    - globalThis and then arrow function created with this pointer-->returns globalThis
+    - globalThis and returned arrow function created with this pointer--> returns object
+25. JavaScript Modules
+    - allow for partitioning and sharing of code
+    - Node.js introduced concept of modules (now available in JavaScript)
+    - JS modules-->ES modules
+    - create file-based scope--> must explicitly export objects and import into other file
+    - modules can only be called from other modules
+    - specify using ES module by including type attribute with value of module in script element
+    - if want to use module in global scope-->leak to global scope--> attach event handler or explicitly add function to global window object
+    - Example: <html>
+                  <body>
+                    <script type="module">
+                      import { alertDisplay } from './alert.js';
+                      window.btnClick = alertDisplay;
+                
+                      document.body.addEventListener('keypress', function (event) {
+                        alertDisplay('Key pressed');
+                      });
+                    </script>
+                    <button onclick="btnClick('button clicked')">Press me</button>
+                  </body>
+                </html>
+    - Use web framework bundler to generate web application distribution code, don't have to worry about differentiationg between scope-->will inject necessary syntax to connect-->bundler exposes ES module directly
+26. Document Object Model(DOM)
+    - object representation of HTML elements used to render display
+    - can write programs that dynamically manipulate the HTML
+    - browser provides access to DOM through global variable name (document) that points to root element of the DOM
+    - everything in HTML document has a node in the DOM
+    - includes elements, attributes, text, comments, whitespace
+    - form a big tree with document at the top
+    - elements implement DOM element interface (comes from DOM Node Interface)
+    - DOM Element Inerface-->iterate child elements, access parent elements, manipulate element attributes
+    - querySelectorAll (select elements)
+    - can use document.querySelector();
+    - textContent (contains all the elements text)
+    - innerHTML (textual representation of elementss HTML content)
+    - Modifying the DOM
+    - create a new element (document.createElement();)
+    - insert new element by appending to existing element (parentElement.appendChild();)
+    - delete elements (child.parentElement.removeChild(child);)
+    - Injecting HTML
+    - can inject blocks of HTML into element
+    - common attack vector for hackers as users
+    - make sure it cannot be manipulated by user
+    - injection paths (HTML input controls, URL parameters, HTTP headers)
+    - sanitize HTML that contains variables or use DOM manipulation functions instead of using innerHTML
+    - Event Listeners
+    - function that gets called when event occurs on element
+    - add listener to: clipboard, focus, keyboard, mouse, text selection
+    - example: const submitDataEl = document.querySelector('#submitData');
+                submitDataEl.addEventListener('click', function (event) {
+                  console.log(event.type);
+                });
+    - add event listeners directly  in HTML
+    - example: <button onclick='alert("clicked")'>click me</button>
+27. Local Storage
+    - ability to persistently sotr and retrieve data on user's brower across user sessions and HTML page renderings
+    - also cache when data cannot be obtained from the server
+    - functions
+    - setItem(name, value)
+    - getItem(name)
+    - removeItem(name)
+    - clear()
+    - local storage value must be string, number, or boolean
+    - if want to store JavaScript object or array-->convert to JSON string with JSON.stringify() when inserted and convert back with JSON.parse()
+28. Promises
+    - rendering process of HTML executes on single thread
+    - cannot take a long time to process JavaScript at beginning
+    - use promise for long running executions
+    - background execution
+    - create promise by calling Promise object constructor and pass executor function that runs asynchronously (promise constructor may return before executor function runs)
+    - states of promise execution (pending (currently running asynchronously), fulfilled (completed successfully), rejected (failed to complete))
+    - promise executor takes two functions as parameters (resolve, reject)
+    - resolve-->fulfilled state, reject-->rejected state
+    - promise object has 3 functions: then,catch, finally
+    - then-->called if fulfilled, catch-->called if reject, finally--> always called after processing completed
+    - example: const coinToss = new Promise((resolve, reject) => {
+                  setTimeout(() => {
+                    if (Math.random() > 0.5) {
+                      resolve('success');
+                    } else {
+                      reject('error');
+                    }
+                  }, 10000);
+                });
+29. JavaScript Async/await
+    - await wraps execution of promise (removing chain functions), blocks the promise state moves to fulfilled or throws exception if moves to rejected
+    - set up this way: const coinToss = () => {
+                          return new Promise((resolve, reject) => {
+                            setTimeout(() => {
+                              if (Math.random() > 0.1) {
+                                resolve(Math.random() > 0.5 ? 'heads' : 'tails');
+                              } else {
+                                reject('fell off table');
+                              }
+                            }, 1000);
+                          });
+                        };
+    - different versions of setup:
+    - then/catch chain version
+            coinToss()
+              .then((result) => console.log(`Toss result ${result}`))
+              .catch((err) => console.error(`Error: ${err}`))
+              .finally(() => console.log(`Toss completed`));
+    - async, try/catch version 
+            try {
+              const result = await coinToss();
+              console.log(`Toss result ${result}`);
+            } catch (err) {
+              console.error(`Error: ${err}`);
+            } finally {
+              console.log(`Toss completed`);
+            }
+    - async
+    - cannot call await unless top level of JavaScript or in function definded with async
+    - async transforms function so it returns a promise that will resolve to value previously returned by function
+    - return value of async function--> Promise {<state>: value}
+    - if async function set up to return new Promise --> Promise {<pending>}
+    - await then returns result of promise
+    - await function();-->will return value from function
+    - great for feching web API that returns JSON (resolve two promises--> network call and converting result to JSON) need to wait until first resolved)
+30. Debugging JavaScript
+    - simplest way--> console.log
+    - use debugger console window to inspect variables
+    - execute JavaScript directly in console window
+    - browser debugger--> select source tab, select index.js, breakpoints, refresh (reload and pause on breakpoint)
+31. Node.js
+    - s
+32. 
+33. 
