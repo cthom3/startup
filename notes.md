@@ -536,18 +536,56 @@
     - can power entire technology stack
     - ...
 33. Debugging Node.js
+    - Debug JavaScript in VS Code
+    - Start Debugging (F5)-->use Node.js debugger
     - 
 34. Web frameworks
     - Simplify common patterns, provide common componenets, improve performance, increase device coverage
     - tools to modularize code, create single page applications, simplify reactivity, support diverse hardware devices
     - Some frameworks make new file formats that combine languages into one file (ex. React)
     - focus on functional components rather than files
-    - 
+    - Types: Vue (HTML, CSS, JAvaScript in single file), Svelte (same as Vue but requires transpiler instead of DOM),REact (JAvaScript and HTML in component format with CSS outside the file, componenet leverages functionaligy of JavaScript, represented as function or class)
+    - Angular component (defines what JavaScript, HTML, and CSS are combined together, strong separation of files)
     - virtual DOM (shadow DOM), takes copyonly in memory, really fast, changes happen in here first (make new tree), finds diff between and then only changes the diff in web browser tree, constantly watching components to see what changes
-    - 
 35. React (JSX)
     - Combines javascript and html (Babel talks between JSX to make JS)
     - Use in Codepen if select Babel as JavaScript processor
     - less html used within document
-36. 
-37. 
+    - React.createElement (generates DOM elements and monitors the data for changes, when changes occur, React triggers dependet changes)
+36. Components
+    - React components allow modularization of functionality of page
+    - enables code reuse
+    - generage user interface-->done with "render"-->puts what is returned into HTML element
+    - Allow you to pass information to themin form of element properties
+          - receives properties in constructor and then displays once it renders
+    - components can have internal state
+          - Created with React.useState (hook function)
+          - returns a variable that gives current state and function to update the state
+    - function style components above
+    - can have class style but right now moving away from these
+    - porperties loaded into constructor and state set using setState function on component object
+    - Reactivity controls how componetent reacts to actions or event
+    - Component properties and state used to determine reactivity
+    - When these change--> render function and dependent functions are called
+37. React hooks
+    - Hooks allow React function style components to do have capability and more of class style componenets
+    - New features are included as hooks
+    - hooks can declare and update states in a function component (use useState hook)
+    - useEffect hook --> represent lifecycle events (could run function everytime componenet renders or return a cleanup function as well)--> great for creating side effects for things such as tracking
+    - Hook dependencies
+    - Control what triggers a useEffect hook by specifying dependencies
+    - if specify an empty array [] as hook dependency--> only called when component is first rendered
+    - hooks can only be used in function style componenets and must be called at top scope of function (cannot be inside loop or conditional)
+    - This allows hooks to always be called in the same order when component rendered
+38. Router
+    - web framework router provides essential functionality for single-page applications
+    - browser only loads one HTML and JavaScript manipulates the DOM to give it the appearance of multiple pages
+    - router defines routes a user can take and automatically manipulates DOM to display appropriate framework components
+    - use react-router-dom Version 6 (derives from react-router for core functionality)
+    - implementation: BrowserRouter component that holds entire application and controls routing. Link (NavLink) component holds user naviagtion events and modifies what is rendered by the Routes component (matches the to and path attributes)
+39. Reactivity
+    - Reactivity enabled through props, state, and render
+    - JSX rendered-->React parses it and creates a list of references to component's stat or prop object and then monitors them. If changes seen--> calls render function so the change can be seen
+    - don't assume when state will be updated. Even if you use updateState does not mean it will be updated by next line of code as updates happen asychronously (we only know that it will eventually happen)
+40. 
+41. 
