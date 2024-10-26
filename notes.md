@@ -534,11 +534,25 @@
     - application to deploy JavaScript outside browser
     - run on server as well
     - can power entire technology stack
-    - ...
+    - execute a line of JavaScript with Node.js from console with -e parameter
+          - node -e "console.log(1+1)"
+    - really actually create file index.js that references code found in rest of project
+          - node index.js
+    - can run node in interpretive mode by executing without parameters (just type "node") and then typing JavaScript code directly into the interpreter
+    - helpful to use packages--> install pacakges locally with NPM (Node Package Manager) and then include require statement in code that references the pacakge name
+    - first initialize code to use NPM
+          - create directory that will contian JavaScript
+          - run npm init (return to accept defaults) or put -y at end
+    - package.json was created-->1. metadat about project, commands that you can execute, packages the project depends on
+    - npm install [name of package]
+    - npm uninstall [name of package]
+    - NPM creates package-lock.json and directory with node_modules (will get very large)
+    - PUT node_modules in .gitignore file
+    - When clone source code on new location --> run npm install
+    - package-lock.json ensures that different versions are not downloaded, ensuring compatability
 33. Debugging Node.js
     - Debug JavaScript in VS Code
     - Start Debugging (F5)-->use Node.js debugger
-    - 
 34. Web frameworks
     - Simplify common patterns, provide common componenets, improve performance, increase device coverage
     - tools to modularize code, create single page applications, simplify reactivity, support diverse hardware devices
@@ -599,5 +613,5 @@
     - Testing--> Automated tests at muliple levels to ensure correctness
     - Deployment--> Automated packaging and delivery of code from the development environment to the production environment
     - For us: GitHub (code repository), Vite ( JSX, TS, development and debugging support), ESBuild (converting to ES6 modules and transpiling (with Babel underneath)), Rollup (for bundling and tree shaking), PostCSS (for CSS transpiling), simple bash script (deployReact.sh for deployment)
-41. 
+41.  
 42. 
