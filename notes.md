@@ -587,5 +587,17 @@
     - Reactivity enabled through props, state, and render
     - JSX rendered-->React parses it and creates a list of references to component's stat or prop object and then monitors them. If changes seen--> calls render function so the change can be seen
     - don't assume when state will be updated. Even if you use updateState does not mean it will be updated by next line of code as updates happen asychronously (we only know that it will eventually happen)
-40. 
+40. Toolchains
+    - common functional pieces in a web application tool chain
+    - Code repository--> store code in a shared, versioned location
+    - Linter--> removes or warns of non-idiomatic code usage
+    - Prettier-->Formats code according to shared standard
+    - Transpiler--> compiles code into a different format (JSX to JavaScript)
+    - Polyfill-->Generates backward compatible code for supporting old browser versions that do not support the latest standards
+    - Bundler-->Packages code into bundles for delivery to the browser (enables compatibility (ex. EX6 module support) or performance (lazy loading))
+    - Minifier-->Removes whitespace and renames variables in order to make code smaller and more efficient to deploy
+    - Testing--> Automated tests at muliple levels to ensure correctness
+    - Deployment--> Automated packaging and delivery of code from the development environment to the production environment
+    - For us: GitHub (code repository), Vite ( JSX, TS, development and debugging support), ESBuild (converting to ES6 modules and transpiling (with Babel underneath)), Rollup (for bundling and tree shaking), PostCSS (for CSS transpiling), simple bash script (deployReact.sh for deployment)
 41. 
+42. 
