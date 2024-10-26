@@ -1,5 +1,38 @@
 # CS-260-Startup
 
+## Startup HTML:
+1. HTML pages for each component of application
+    - Home page--> login and create account
+    - About page--> textual content for website
+    - Recipes page--> where database info will go with recipes, ratings, and recipe names
+          - Add page--> included link here as this will later be pop up from pushing "Add Recipe" button, form to insert recipe into database
+          - Recommendations page--> included link here but this will have the ratings of others later
+2. Proper use of HTML tags including BODY, NAV, MAIN, HEADER, FOOTER
+    - Each main page has each of these elements
+    - Header-->Comfort Cooking and Webserver picture
+    - Footer-->Git hub link and Author name
+    - Main/Body--> varies depending on page
+    - Nav-->Has link to other pages
+3. Links between pages as necessary
+    - There is a navigation bar at the top with Home, Recipes, and About
+    - Currently Recipes page has other links to Add Recipes, Recommendations, and the pancakes recipes, but later these will just be popups from pressing a button or the recipe
+4. Application textual content
+    - There is an about page explaining the purpose of the website
+5. Placeholder for 3rd party service calls
+    - In the header on each page, there will be an image from a 3rd party
+    - Right now, this appears as the image icon with Webserver text next to it
+6. Application images
+    - There are images within the recipes page
+7. Login placeholder, including user name display
+    - On the home page, there is a login placeholder where email (username) is entered as well as a password
+    - There is also a button to create an account
+8. Database data placeholder showing content stored in the database
+    - On the Recipes page, there are pictures with recipes, ratings, and the recipe name. This will eventually be populated by the database. The recipes are shown as only the breakfast section is not collapsed
+9. WebSocket data placeholder showing where realtime communication will go
+    - On the recipe page, there is a link for recommendations that will later be where WebSocket data will appear
+    - This will be comprised of user, rcipe, rating, and date of rating
+
+   
 ## Elevator Pitch:
 
 Having home-cooked meals brings lots of comfort, but it can be difficult to keep track of and share recipes you love. This website, Comfort Cooking: Recipe Repository, will allow you to easily search and add recipes, rate recipes, and see the ratings of others instantly. With your own account, everything is stored for easy access for every time you are in the kitchen. 
