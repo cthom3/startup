@@ -613,5 +613,33 @@
     - Testing--> Automated tests at muliple levels to ensure correctness
     - Deployment--> Automated packaging and delivery of code from the development environment to the production environment
     - For us: GitHub (code repository), Vite ( JSX, TS, development and debugging support), ESBuild (converting to ES6 modules and transpiling (with Babel underneath)), Rollup (for bundling and tree shaking), PostCSS (for CSS transpiling), simple bash script (deployReact.sh for deployment)
-41.  
-42. 
+41.  Internet
+    - connects most of the computers in the world (connects networks and computing devices)
+     - need IP address (users use domain names (which are converted to IP addresses by DNS (Domain Name System))
+     - look up IP address using "dig" in the console
+     - connect to device by asking for connection route (many hops across network)
+     - "traceroute" in console to see what connection route was made (dynamically calculated so it could change)
+     - ability to discover a route makes internet resilient when network devices fail or disappear from network
+     - sending data involves TCP/IP model (physical wires to data sent)
+          - application layer (user functionality-->web (HTTP), mail (SMTP), files (FTP), remote shell (SSH), chat (IRC))
+          - transport layer--> breaks application layer info into small chunks and sends data (ex. TCP)
+          - internet layer--> where real connection made--> finds device and keeps connection (ex. IP)
+          - link layer--> physical connections and hardware (ex. Fiber)
+43. Web Servers
+    - computing device that host web service that know how to accept incoming internet connections and speaks HTTP application protocol
+    - being able to easily create web services makes it easy to build web services right into web application
+    - common to find multiple web services running on same computing device
+        - these are run on different ports
+        - use service gateway (reverse proxy) a web service that looks up requests and map them to other services running on other ports
+        - we use Caddy
+    - microservices (single functional purpose that web services provide)
+    - partition functionality to small logical chunks so you can develop and manage them independently from other functionality into larger system
+    - handle large fluctuations in user demand by running more copies of microservice from multiple virutal servers
+    - basically just run more instances of service
+    - serverless functionality--> just write function that speaks HTTP that is loaded through gateway (would automatically scale hardware needed based on demand)--> reduces what needs to be done
+44. Domain names
+    - use "dig" to get IP address for any domain
+    - sometimes multiple IP addresses for same domain name--> redundancy in case an IP address fails to connect (b/c server not responding)
+    - 
+45. 
+46. 
