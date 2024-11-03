@@ -613,7 +613,37 @@
     - Testing--> Automated tests at muliple levels to ensure correctness
     - Deployment--> Automated packaging and delivery of code from the development environment to the production environment
     - For us: GitHub (code repository), Vite ( JSX, TS, development and debugging support), ESBuild (converting to ES6 modules and transpiling (with Babel underneath)), Rollup (for bundling and tree shaking), PostCSS (for CSS transpiling), simple bash script (deployReact.sh for deployment)
-41.  Internet
+41. Vite
+    - Use CLI (Command LIne Interface) to initially set up web application
+    - This saves trouble of configuring toolchain parameters and gets you started with default application
+    - Vit bundles code quickly, has great debugging support, allows to easily support JSX, TypeScript, and different CSS flavors
+    - Run this code: npm create vite@latest demoVite -- --template react
+            cd demoVite
+            npm install
+            npm run dev
+    - This creates a new web application in the demoVite directory, download required 3rd party packages, start up the application using a local HTTP debugging server
+    - press o to open browser to the URL that is hosting application
+    - press h to see all the Vite CLI options
+    - press q to return to console and stope Vite from hosting the application
+    - Files created by Vite
+          - ./index.html-->primary application page, starting point to load all JSC components (beginning with main.jsx)
+          - ./package.json --> NPM definition for package dependencies and script commands (maps "npm run dev" to actually start up Vite)
+          - ./package-lock.json --> Version constraints for included packages (do not edit this)
+          -./vite.config.js--> configuration setting for Vite (sets up React for development)
+          - ./public/vite.svg--> vite logo
+          - ./src/main.jsx --> entry point for code execution (loads App component found in App.jsx)
+          - ./src/index.css --> css for the entire application
+          - ./src/App.jsx --> JSX for top level application (displays the logs and implements click counter)
+          - ./src/App.css --> CSS for the top level application component
+          - ./src/assets/react.svg --> react logo for display in the app
+    - main.jsx creates React application by associating #root element with App component in App.jsx--> causes render functions to execute-->generated HTML,CSS, and JavaScript executed in index.html
+    - Vite CLI uses .jsx extension for JSX files instead of .js
+    - Babel transpiler works with either but editor tools work differently based upon extension
+    - When execute "npm run dev", bundling code to a temporary directory that the Vite debug HTTP server loads from
+    - When bundling application so you can deploy to a production environment, run "npm run build" (executes build script found in package.json and invokes Vite CLI)
+      - "vite build" transpiles, minifies, injects the proper JavaScript, then outputs everything to a deployment-ready version contained in the distribution subdirectory named dist
+      - deployReact.sh creates production distribution by calling "npm run build" and then copying the dist directory that was created to the production server
+42.  Internet
     - connects most of the computers in the world (connects networks and computing devices)
      - need IP address (users use domain names (which are converted to IP addresses by DNS (Domain Name System))
      - look up IP address using "dig" in the console
@@ -640,6 +670,31 @@
 44. Domain names
     - use "dig" to get IP address for any domain
     - sometimes multiple IP addresses for same domain name--> redundancy in case an IP address fails to connect (b/c server not responding)
-    - 
-45. 
-46. 
+    - domain names-->follow naming convention--> found in Domain Name Registry, made up  of root domain with 1+ subdomain prefixes
+    - root domain has secondary level and top level domain (TLD) (ex. com, edu, click)
+    - TLD's are controlled by ICANN (a governing board of the internet)
+    - create subdomains which might have different iP addresses
+    - info about domain name using "whois" in console
+    - once a domain name is in registry--> listed with a domain name system (DNS) server and associated with IP address
+    - lease IP address
+    - there are authoritative name servers
+    - records that allow the mapping
+        - address (A)--> straight mapping from domain name to IP address
+        - canonical name (CNAME)-->map from one domain name to another one (alias)
+    - Process: put domain name in browser, browser checks to see if already has the name in cache, if not contact DNS server and get IP address if in cache, if not gets from authoritative name server, if not there get error, if found in any step HTTP connection
+    - lots of caching for performance reasons--> hard if trying to update info with domain name-->use (TTL) or time to live setting so then the different layers clear cache after requested period
+45. Web services
+    - when frontend (all HTML, CSS, JavaScript, and image files) requests from webserver--> uses HTTPS protocol
+    - ALL web programming requests between devices use HTTPS to exchange data
+    - from frontend JavaScript--> requests to external services anywhere
+    - to make web service request (give URL of web service to fetch function)
+    - Creat own web service --> will provide static frontend files, functions to handle fetch requests for storing data, providing security, running tasks, executing application logic in background, and communicating with other users
+    - functionality-->backend
+    - functions provided by webservice--> endpoints (APIs)
+    - access web service endpoints from frontend JavaScript with fetch function
+46. URL
+47. Port
+48. HTTP
+49. Fetch
+50. 
+51. 
