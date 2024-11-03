@@ -693,6 +693,12 @@
     - functions provided by webservice--> endpoints (APIs)
     - access web service endpoints from frontend JavaScript with fetch function
 46. URL
+    - Uniform Resource Locator (URL) represents location of web resource
+    - web resources--> web page, font, image, video stream, database record, JSON object, or more ephemeral (visitation counter or gaming session)
+    - many parts with punctuation-->only scheme and domain name are required
+          -Scheme (ex. https)--> protocol required to ask for resource (usually HTTPS but could be FTP or MAILTO)
+          - Domain name (ex. byu.edu)--> owns resource represented by URL
+          - Port (ex. 3000)-->specifies numbered network port used to connect to domain server (lower number ports for common internet protocols, higher number ports used for any purpose) (port 80-->HTTP or port 443-->HTTPS)
 47. Port
 48. HTTP
 49. Fetch
