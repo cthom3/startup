@@ -699,7 +699,16 @@
           -Scheme (ex. https)--> protocol required to ask for resource (usually HTTPS but could be FTP or MAILTO)
           - Domain name (ex. byu.edu)--> owns resource represented by URL
           - Port (ex. 3000)-->specifies numbered network port used to connect to domain server (lower number ports for common internet protocols, higher number ports used for any purpose) (port 80-->HTTP or port 443-->HTTPS)
+          - Path (ex. /school/byu/user/8014)-->path to resource on domain, resource does not have to physically be located on file system with path, could just be a logical path representing endpoint parameters, database table, or object schema
+          - Parameters (ex. filter=names&hightlight=intro,summary)-->represents a list of key value pairs (provides additional qualifies on resource represented by path), could be a filter on returned resource or how to highlight the resource, parameters sometimes called query string
+          - Anchor (ex. summary)-->represents sub-location in resource, for HTML pages represents request for browser to automatically scrll to element with an ID that matches the anchor, Anchor sometimes called the hash or fragment ID
+      - could proved user name and password before domain name (how access was authenticated before) but no longer used for security
+      - Uniform Resource Name (URN)--> resource name that does not specify location info
+      - Uniform Resource Identifier (URI)-->refers to either URL or URN
 47. Port
+    - To connect device to internet, need IP address and numbered port
+    - Port numbers allow device to support multiple protocols (HTTP,HTTPS, FTP,SSH) and services (search, document, authentication)
+    - Ports can be exposed externally or only used internally on device
 48. HTTP
 49. Fetch
 50. 
