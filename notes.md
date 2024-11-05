@@ -709,6 +709,23 @@
     - To connect device to internet, need IP address and numbered port
     - Port numbers allow device to support multiple protocols (HTTP,HTTPS, FTP,SSH) and services (search, document, authentication)
     - Ports can be exposed externally or only used internally on device
+    - IANA, internet govering body, defines standard usage for port numbers
+    - Ports 0 to 1023 represent standard protocol
+    - web services should aboid these ports unless porviding protocol represented by standard
+    - Ports 1024 to 49151 represents ports assigned to requesting entities
+    -     common for ports to be used by services running internally on a device
+    - Ports 49152 to 65535 are considered dynamic and are used to create dynamic connections to device
+    - Common Ports
+    - 20-->File Transfer Protocol (FTP) for data transfer
+    - 22-->Secure Shell (SSH) for connecting remote devices
+    - 25-->Simple Mail Transfer Protocol (SMTP) for sending email
+    - 53-->Domain Name System (DNS) for looking up IP addresses
+    - 80-->Hypertext Transfer Protocol (HTTP) for web requests
+    - 110-->Post Office Protocol (HTTP) for web requests
+    - 123-->Network Time Protocol (NTP) for managing time
+    - 161-->Simple Network Management Protocol (SNMP) for managing network devices such as routers or printers
+    - 194-->Internet Relay Chat (IRC) for chatting
+    - 443-->HTTP Secure (HTTPS) for secure web requests
 48. HTTP
 49. Fetch
 50. 
