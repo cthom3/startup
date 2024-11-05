@@ -821,9 +821,12 @@
 50. Node web service
     - With JavaScript-->write code that listens on network port, receives HTTP requests, processes them, responds
     - Create simple web service with this and then execute using Node.js
+    - 
 51. Express
     - Node module that must be installed
     - Middleware (app.use([path,]callback(req,res,next)))
     - order matters
-52. 
+52. SOP and CORS
+
 53. 
+54. 
