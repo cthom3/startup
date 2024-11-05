@@ -791,6 +791,33 @@
           - Allows server to remember things about language, authentication
           - Allows servers to track and share what user does
 49. Fetch
+    - fetch API-->preferred way to make HTTP requests
+    - "fetch" function is built into browser's JavaScript runtime
+    - fetch takes URL and returns a promise
+    - promise "then" function takes callback function (asynchronously called when requested URL content obtained)
+    - if returned content is "application/json" type-->use json function on response object to convert to JavaScript
+    - if request method unspecified, defaults to GET
+    - example: fetch('https://quote.cs260.click')
+                  .then((response) => response.json())
+                  .then((jsonResponse) => {
+                    console.log(jsonResponse);
+                  });
+      - POST request--> put in HTTP method and headers as option parameters
+      - example: fetch('https://jsonplaceholder.typicode.com/posts', {
+                      method: 'POST',
+                      body: JSON.stringify({
+                        title: 'test title',
+                        body: 'test body',
+                        userId: 1,
+                      }),
+                      headers: {
+                        'Content-type': 'application/json; charset=UTF-8',
+                      },
+                    })
+                      .then((response) => response.json())
+                      .then((jsonResponse) => {
+                        console.log(jsonResponse);
+                      });
 50. Node web service
     - With JavaScript-->write code that listens on network port, receives HTTP requests, processes them, responds
     - Create simple web service with this and then execute using Node.js
