@@ -821,12 +821,60 @@
 50. Node web service
     - With JavaScript-->write code that listens on network port, receives HTTP requests, processes them, responds
     - Create simple web service with this and then execute using Node.js
-    - 
+    - callback function takes request (req) and response (res)
+    - called whenever server receives an HTTP request
+    - real web service-->examine HTTP path and return meaningful content based on purpose of endpoint
+    - server.listen-->given port and blocks until program is terminated
+    - Nodemon package-->wrapper around node and watches for files in project directory to change, when something saved-->automatically restart node
 51. Express
     - Node module that must be installed
+    - supports routing requests for service endpoints, manipulating HTTP requests with JSON body content, generating HTTP responses, using middleware to add functionality
+    - revolves on creating and using HTTP routing and middleware functions
+    - express constructor to create express application and listen for HTTP requests on desired port
+    - example: const express = require('express');
+                const app = express();
+                app.listen(8080);
+    - with app object-->can add HTTP routing and middleware functions to application
+    - Defining routes--> how HTTP endpoints are implemented in Express
+    - routes call function based upon HTTP path
+    - app object supports all HTTP verbs as functions on object (app.get())
+    - example: app.get('/store/provo', (req, res, next) => {
+                      res.send({name: 'provo'});
+                    });
+    - use next if routing function wants another function to generate response
+    - path parameters by prefixing with :
+    - example: app.get('/store/:storeName', (req, res, next) => {
+                  res.send({name: req.params.storeName});
+                });
+    - reference parameters using req.params object
+    - can have wildcard syntax or regex in path pattern
+    - examples: // Wildcard - matches /store/x and /star/y
+            app.put('/st*/:storeName', (req, res) => res.send({update: req.params.storeName}));
+            // Pure regular expression
+            app.delete(/\/store\/(.+)/, (req, res) => res.send({delete: req.params[0]}));
+    - if next is not called, no following middleware functions will be invoked
+    - Middleware and mediator (Express in our case)
+    - Middleware represents componentized pieces of functionality
+    - Mediator loads middleware components and determines order of execution
+    - request to mediator, to middleware components
+    - Express has middleware functions (default and install, can write own)
+    - middleware function similar to routing function(which are middleware but only called if pattern matches)
+    - middleware functions always called for every HTTP request unless preceding function does not call next
+    - function middlewareName(req, res, next)
+    - example of creating own: app.use((req, res, next) => {
+                                      console.log(req.originalUrl);
+                                      next();
+                                    });
     - Middleware (app.use([path,]callback(req,res,next)))
-    - order matters
+    - order matters--> order that add middleware to app object controls order they are called, stops when no next called
+    - built-in example: app.use(express.static('public'));
+    - 3rd party--> include package in require function, often for functions to add feilds so other middleware can access functionality
+    - handle error middleware: function errorMiddlewareName(err, req, res, next), can have it throw error
+    - if called curl on error endpoint, see response
 52. SOP and CORS
-
+    - Cross-origin request (request from one domain and display from other) used to be allowed but hackers can take advantage
+    - Use Same Origin Policy (SOP) now--> only allows JavaScripte to make requests to domain if domain user is viewing (security and complications)
+    - Cross Origin Resource Sharing (CORS)--> allows client to specify origin of request and let server respond with what is allowed, if don't specify (assume same origin)
+    - browser protects user-->only meant to alert user of nefarious intentions, hacker can still proxy request and ignore Access-Control-Allow-Origin header
 53. 
 54. 
