@@ -868,13 +868,74 @@
     - Middleware (app.use([path,]callback(req,res,next)))
     - order matters--> order that add middleware to app object controls order they are called, stops when no next called
     - built-in example: app.use(express.static('public'));
+    - automatically calls next-->check others 
     - 3rd party--> include package in require function, often for functions to add feilds so other middleware can access functionality
     - handle error middleware: function errorMiddlewareName(err, req, res, next), can have it throw error
     - if called curl on error endpoint, see response
+    - endpoints-->API calls you can make, functions you can call through URL
 52. SOP and CORS
     - Cross-origin request (request from one domain and display from other) used to be allowed but hackers can take advantage
     - Use Same Origin Policy (SOP) now--> only allows JavaScripte to make requests to domain if domain user is viewing (security and complications)
     - Cross Origin Resource Sharing (CORS)--> allows client to specify origin of request and let server respond with what is allowed, if don't specify (assume same origin)
     - browser protects user-->only meant to alert user of nefarious intentions, hacker can still proxy request and ignore Access-Control-Allow-Origin header
-53. 
-54. 
+53. Service Design
+    - Web services provide interactive functionality
+    - Need good design that will result in increased productivity, satisfied users, and lower processing costs
+    - model teh application objects and interactions (from user POV)
+    - Create sequence diagram-->defines necessary endpoints
+    - Web services provided over HTTP (influences design)
+    - leverage HTTP verbs or other file types so don't recreate functionality
+    - cache servers--> increase performance
+    - edge servers--> bring content closer
+    - replication servers--> provide redundant copies of content/more resilient to network failures
+    - Web service has multiple service endpoints (API or Application Programming Interface (could be one or many))
+    - Each enpoint has single functional purposse
+    - Grammatical-->resource (noun), act on it with verb
+    - Readable-->clearly readable in URL path
+    - Discoverable-->as expose resources that store other resources provide the endpoints for them (then only need to remember the top level and can access everything else)
+    - Compatible-->Make it so can add new functionality w/o breaking existing, clients of service endpoints should ignore anything they don't understand
+    - Simple--> keep endpoints focused on primary resources (avoid adding duplicate or parallel access), only one way to act on resource
+    - Documented-->make uses of tools (like Open API Specification) to provide client libraries for endpoints and a sandbox for experimentation, make initial draft of your endpoint documentation
+    - Remote Procedure Calls (RPC) exposes service endpoints as simple function calls
+    - When used over HTTP, leverages POST HTTP verb, actual verb/subject of function call is represented by function name, name of function is entire path of URL or parameter in POST body
+    - examples: POST /updateOrder HTTP/2
+                {"id": 2197, "date": "20220505"}
+                POST /rpc HTTP/2
+                {"cmd":"updateOrder", "params":{"id": 2197, "date": "20220505"}}
+    - Advantage of RPC is that it maps directly to function calls that exist within server (could be disadvantage because directly exposes the inner workings of service, creates coupling between endpoints and implementation)
+    - Representational State Transfer (REST) takes advantage of principles of HTTP
+    - REST HTTP verbs always act on resource
+    - Operations on resource impact state of resources
+    - allows for caching functionality of HTTP to work optimally
+    - example: PUT /order/2197 HTTP/2
+                {"date": "20220505"}
+    - GraphQL--> focuses on manipulation of data
+    - query that specifies desired data and how it should be joined and filtered
+    - reduces number of calls-->sends single query requesting all infoin big JSON response
+    - removes logic of parsing endpoints and mapping requests to specific resource
+    - in GraphQL only one endpoint (query endpoint)
+    - downside of flexibility is that client has power to consume resources on server
+54. PM 2
+    - To keep programs running after shutdown, register as daemon
+    - PM 2 has web services continue running as a daemon and easy way to start/stop services
+    - should not need to touch files but if services not running, commands
+          - pm2 ls-->list all of the hosted node processes
+          - pm2 monit--> visual monitor
+          - pm2 start index.js -n simon --> add a new process with an explicit name 
+          - pm2 start index.js -n startup --4000 -->add a new process with an explicit name and port parameter
+          - pm2 stop simon --> stop a process
+          - pm2 restart simon --> restart a process
+          - pm2 delete simon --> delete a process from being hosted
+          - pm2 delete all --> delete all processes
+          - pm2 save --> save the current processes across reboot
+          - pm2 restart all ---> reload all of the processes
+          - pm2 restart simon --update-env --> reload process and update the node version to the current environment definition
+          - pm2 update --> reload pm2
+          - pm2 start env.js --watch-- ignore-watch="node_modules" -->automatically reload service when index.js changes
+          - pm2 describe simon --> describe detailed process info
+          - pm2 startup --> displays the command to run to keep PM2 running after a reboot
+          - pm2 logs simon --> displays process logs
+          - pm2 env 0 --> display environment variables for process (Use pm2 ls to get process ID)
+    -  
+55. 
+56. 
