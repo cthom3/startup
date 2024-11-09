@@ -4,17 +4,40 @@ body {
 }
 
 header {
-
+    flex: 0 50px;
 }
 
 main {
-
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    margin: 2em;
 }
 
 footer {
-
+    flex: 0 50px;
 }
 
 menu {
+    flex: 1;
+    display: flex;
+    flex-direction: row !important;
+    list-style: none;
+    border-bottom: solid thin;
+}
 
+menu .nav-item {
+    padding: 0 0.5em;
+    margin: 1em;
+}
+
+input {
+    margin: 1em;
+}
+
+
+button {
+    margin: 1em;
 }
