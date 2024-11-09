@@ -1,11 +1,13 @@
 body {
     display: flex;
     flex-direction: column;
-    flex: 80vh;
+    height: 80vh;
+    text-align: center;
 }
 
 header {
-    flex: 10vh;
+    height: 10vh;
+    text-align: center;
 }
 
 main {
@@ -14,12 +16,15 @@ main {
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
-    margin: 2em;
+    padding: 2em;
 }
 
 footer {
-    flex: 10vh;
     border-top: solid thin;
+    text-align:center;
+    padding: 3px;
+    bottom: 0;
+    height: 10vh;
 }
 
 menu {
@@ -28,11 +33,12 @@ menu {
     flex-direction: row !important;
     list-style: none;
     border-bottom: solid thin;
+    text-align: center;
 }
 
 menu .nav-item {
-    padding: 0 0.5em;
     margin: 1em;
+    text-align: center;
 }
 
 div {
@@ -53,4 +59,9 @@ button {
     main {
         flex: 1 100vh;
     }
+}
+
+a {
+    text-align: center;
+    color: white;
 }
