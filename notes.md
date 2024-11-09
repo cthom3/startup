@@ -43,7 +43,7 @@
     - wget (downloads files from internet)
     - vim (VI oldest console editor)
     - nano (command line editor)
-    - chmod +x deploy.sh (makes a script executable)
+    - chmod +x deploy.sh (makes a script executable) (changes a file's mode bits to control the access rights to a file)
     - man (look up a command in the manual)
     - | (take output from left side and pass it to command on right)
     - '>' (output to file, overwrite if exists)
@@ -347,7 +347,7 @@
     - throwing exceptions should only happen when something truly exceptional occurs
     - Fallbacks (return something even if something is temperarily unavailable)
 23. JavaScript Destructuring
-    - pulling indivitual items out o fexisting one
+    - pulling indivitual items out of existing one
     - done with arrays or objects
     - arrays it is assumed by position
     - for objects, explicitly specify
@@ -424,6 +424,7 @@
                 </html>
     - Use web framework bundler to generate web application distribution code, don't have to worry about differentiationg between scope-->will inject necessary syntax to connect-->bundler exposes ES module directly
 26. Document Object Model(DOM)
+    - <!DOCTYPE html> (directs browser to use relevant specifications when rendering the html)
     - object representation of HTML elements used to render display
     - can write programs that dynamically manipulate the HTML
     - browser provides access to DOM through global variable name (document) that points to root element of the DOM
@@ -433,6 +434,8 @@
     - elements implement DOM element interface (comes from DOM Node Interface)
     - DOM Element Inerface-->iterate child elements, access parent elements, manipulate element attributes
     - querySelectorAll (select elements)
+    - document.getElementById(id).style.color = __ (to change text color)
+    - document.querySelector(__).textContent= "" (to rewrite info)
     - can use document.querySelector();
     - textContent (contains all the elements text)
     - innerHTML (textual representation of elementss HTML content)
@@ -455,7 +458,7 @@
                 });
     - add event listeners directly  in HTML
     - example: <button onclick='alert("clicked")'>click me</button>
-27. Local Storage
+28. Local Storage
     - ability to persistently sotr and retrieve data on user's brower across user sessions and HTML page renderings
     - also cache when data cannot be obtained from the server
     - functions
@@ -465,7 +468,7 @@
     - clear()
     - local storage value must be string, number, or boolean
     - if want to store JavaScript object or array-->convert to JSON string with JSON.stringify() when inserted and convert back with JSON.parse()
-28. Promises
+29. Promises
     - rendering process of HTML executes on single thread
     - cannot take a long time to process JavaScript at beginning
     - use promise for long running executions
@@ -485,7 +488,8 @@
                     }
                   }, 10000);
                 });
-29. JavaScript Async/await
+      - if in promise, reject(false); catch and finally statements occur
+30. JavaScript Async/await
     - await wraps execution of promise (removing chain functions), blocks the promise state moves to fulfilled or throws exception if moves to rejected
     - set up this way: const coinToss = () => {
                           return new Promise((resolve, reject) => {
@@ -521,15 +525,417 @@
     - await then returns result of promise
     - await function();-->will return value from function
     - great for feching web API that returns JSON (resolve two promises--> network call and converting result to JSON) need to wait until first resolved)
-30. Debugging JavaScript
+31. Debugging JavaScript
     - simplest way--> console.log
     - use debugger console window to inspect variables
     - execute JavaScript directly in console window
     - browser debugger--> select source tab, select index.js, breakpoints, refresh (reload and pause on breakpoint)
-31. Node.js
+32. Node.js
     - application to deploy JavaScript outside browser
     - run on server as well
     - can power entire technology stack
-    - ...
-32. 
-33. 
+    - execute a line of JavaScript with Node.js from console with -e parameter
+          - node -e "console.log(1+1)"
+    - really actually create file index.js that references code found in rest of project
+          - node index.js
+    - can run node in interpretive mode by executing without parameters (just type "node") and then typing JavaScript code directly into the interpreter
+    - helpful to use packages--> install pacakges locally with NPM (Node Package Manager) and then include require statement in code that references the pacakge name
+    - first initialize code to use NPM
+          - create directory that will contian JavaScript
+          - run npm init (return to accept defaults) or put -y at end
+    - package.json was created-->1. metadat about project, commands that you can execute, packages the project depends on
+    - npm install [name of package]
+    - npm uninstall [name of package]
+    - NPM creates package-lock.json and directory with node_modules (will get very large)
+    - PUT node_modules in .gitignore file
+    - When clone source code on new location --> run npm install
+    - package-lock.json ensures that different versions are not downloaded, ensuring compatability
+33. Debugging Node.js
+    - Debug JavaScript in VS Code
+    - Start Debugging (F5)-->use Node.js debugger
+34. Web frameworks
+    - Simplify common patterns, provide common componenets, improve performance, increase device coverage
+    - tools to modularize code, create single page applications, simplify reactivity, support diverse hardware devices
+    - Some frameworks make new file formats that combine languages into one file (ex. React)
+    - focus on functional components rather than files
+    - Types: Vue (HTML, CSS, JAvaScript in single file), Svelte (same as Vue but requires transpiler instead of DOM),REact (JAvaScript and HTML in component format with CSS outside the file, componenet leverages functionaligy of JavaScript, represented as function or class)
+    - Angular component (defines what JavaScript, HTML, and CSS are combined together, strong separation of files)
+    - virtual DOM (shadow DOM), takes copyonly in memory, really fast, changes happen in here first (make new tree), finds diff between and then only changes the diff in web browser tree, constantly watching components to see what changes
+35. React (JSX)
+    - Combines javascript and html (Babel talks between JSX to make JS)
+    - Use in Codepen if select Babel as JavaScript processor
+    - less html used within document
+    - React.createElement (generates DOM elements and monitors the data for changes, when changes occur, React triggers dependet changes)
+36. Components
+    - React components allow modularization of functionality of page
+    - enables code reuse
+    - generage user interface-->done with "render"-->puts what is returned into HTML element
+    - Allow you to pass information to themin form of element properties
+          - receives properties in constructor and then displays once it renders
+    - components can have internal state
+          - Created with React.useState (hook function)
+          - returns a variable that gives current state and function to update the state
+    - function style components above
+    - can have class style but right now moving away from these
+    - porperties loaded into constructor and state set using setState function on component object
+    - Reactivity controls how componetent reacts to actions or event
+    - Component properties and state used to determine reactivity
+    - When these change--> render function and dependent functions are called
+37. React hooks
+    - Hooks allow React function style components to do have capability and more of class style componenets
+    - New features are included as hooks
+    - hooks can declare and update states in a function component (use useState hook)
+    - useEffect hook --> represent lifecycle events (could run function everytime componenet renders or return a cleanup function as well)--> great for creating side effects for things such as tracking
+    - Hook dependencies
+    - Control what triggers a useEffect hook by specifying dependencies
+    - if specify an empty array [] as hook dependency--> only called when component is first rendered
+    - hooks can only be used in function style componenets and must be called at top scope of function (cannot be inside loop or conditional)
+    - This allows hooks to always be called in the same order when component rendered
+38. Router
+    - web framework router provides essential functionality for single-page applications
+    - browser only loads one HTML and JavaScript manipulates the DOM to give it the appearance of multiple pages
+    - router defines routes a user can take and automatically manipulates DOM to display appropriate framework components
+    - use react-router-dom Version 6 (derives from react-router for core functionality)
+    - implementation: BrowserRouter component that holds entire application and controls routing. Link (NavLink) component holds user naviagtion events and modifies what is rendered by the Routes component (matches the to and path attributes)
+39. Reactivity
+    - Reactivity enabled through props, state, and render
+    - JSX rendered-->React parses it and creates a list of references to component's stat or prop object and then monitors them. If changes seen--> calls render function so the change can be seen
+    - don't assume when state will be updated. Even if you use updateState does not mean it will be updated by next line of code as updates happen asychronously (we only know that it will eventually happen)
+40. Toolchains
+    - common functional pieces in a web application tool chain
+    - Code repository--> store code in a shared, versioned location
+    - Linter--> removes or warns of non-idiomatic code usage
+    - Prettier-->Formats code according to shared standard
+    - Transpiler--> compiles code into a different format (JSX to JavaScript)
+    - Polyfill-->Generates backward compatible code for supporting old browser versions that do not support the latest standards
+    - Bundler-->Packages code into bundles for delivery to the browser (enables compatibility (ex. EX6 module support) or performance (lazy loading))
+    - Minifier-->Removes whitespace and renames variables in order to make code smaller and more efficient to deploy
+    - Testing--> Automated tests at muliple levels to ensure correctness
+    - Deployment--> Automated packaging and delivery of code from the development environment to the production environment
+    - For us: GitHub (code repository), Vite ( JSX, TS, development and debugging support), ESBuild (converting to ES6 modules and transpiling (with Babel underneath)), Rollup (for bundling and tree shaking), PostCSS (for CSS transpiling), simple bash script (deployReact.sh for deployment)
+41. Vite
+    - Use CLI (Command LIne Interface) to initially set up web application
+    - This saves trouble of configuring toolchain parameters and gets you started with default application
+    - Vit bundles code quickly, has great debugging support, allows to easily support JSX, TypeScript, and different CSS flavors
+    - Run this code: npm create vite@latest demoVite -- --template react
+            cd demoVite
+            npm install
+            npm run dev
+    - This creates a new web application in the demoVite directory, download required 3rd party packages, start up the application using a local HTTP debugging server
+    - press o to open browser to the URL that is hosting application
+    - press h to see all the Vite CLI options
+    - press q to return to console and stope Vite from hosting the application
+    - Files created by Vite
+          - ./index.html-->primary application page, starting point to load all JSC components (beginning with main.jsx)
+          - ./package.json --> NPM definition for package dependencies and script commands (maps "npm run dev" to actually start up Vite)
+          - ./package-lock.json --> Version constraints for included packages (do not edit this)
+          -./vite.config.js--> configuration setting for Vite (sets up React for development)
+          - ./public/vite.svg--> vite logo
+          - ./src/main.jsx --> entry point for code execution (loads App component found in App.jsx)
+          - ./src/index.css --> css for the entire application
+          - ./src/App.jsx --> JSX for top level application (displays the logs and implements click counter)
+          - ./src/App.css --> CSS for the top level application component
+          - ./src/assets/react.svg --> react logo for display in the app
+    - main.jsx creates React application by associating #root element with App component in App.jsx--> causes render functions to execute-->generated HTML,CSS, and JavaScript executed in index.html
+    - Vite CLI uses .jsx extension for JSX files instead of .js
+    - Babel transpiler works with either but editor tools work differently based upon extension
+    - When execute "npm run dev", bundling code to a temporary directory that the Vite debug HTTP server loads from
+    - When bundling application so you can deploy to a production environment, run "npm run build" (executes build script found in package.json and invokes Vite CLI)
+      - "vite build" transpiles, minifies, injects the proper JavaScript, then outputs everything to a deployment-ready version contained in the distribution subdirectory named dist
+      - deployReact.sh creates production distribution by calling "npm run build" and then copying the dist directory that was created to the production server
+42.  Internet
+    - connects most of the computers in the world (connects networks and computing devices)
+     - need IP address (users use domain names (which are converted to IP addresses by DNS (Domain Name System))
+     - look up IP address using "dig" in the console
+     - connect to device by asking for connection route (many hops across network)
+     - "traceroute" in console to see what connection route was made (dynamically calculated so it could change)
+     - ability to discover a route makes internet resilient when network devices fail or disappear from network
+     - sending data involves TCP/IP model (physical wires to data sent)
+          - application layer (user functionality-->web (HTTP), mail (SMTP), files (FTP), remote shell (SSH), chat (IRC))
+          - transport layer--> breaks application layer info into small chunks and sends data (ex. TCP)
+          - internet layer--> where real connection made--> finds device and keeps connection (ex. IP)
+          - link layer--> physical connections and hardware (ex. Fiber)
+43. Web Servers
+    - computing device that host web service that know how to accept incoming internet connections and speaks HTTP application protocol
+    - being able to easily create web services makes it easy to build web services right into web application
+    - common to find multiple web services running on same computing device
+        - these are run on different ports
+        - use service gateway (reverse proxy) a web service that looks up requests and map them to other services running on other ports
+        - we use Caddy
+    - microservices (single functional purpose that web services provide)
+    - partition functionality to small logical chunks so you can develop and manage them independently from other functionality into larger system
+    - handle large fluctuations in user demand by running more copies of microservice from multiple virutal servers
+    - basically just run more instances of service
+    - serverless functionality--> just write function that speaks HTTP that is loaded through gateway (would automatically scale hardware needed based on demand)--> reduces what needs to be done
+44. Domain names
+    - use "dig" to get IP address for any domain
+    - sometimes multiple IP addresses for same domain name--> redundancy in case an IP address fails to connect (b/c server not responding)
+    - domain names-->follow naming convention--> found in Domain Name Registry, made up  of root domain with 1+ subdomain prefixes
+    - root domain has secondary level and top level domain (TLD) (ex. com, edu, click)
+    - TLD's are controlled by ICANN (a governing board of the internet)
+    - create subdomains which might have different iP addresses
+    - info about domain name using "whois" in console
+    - once a domain name is in registry--> listed with a domain name system (DNS) server and associated with IP address
+    - lease IP address
+    - there are authoritative name servers
+    - records that allow the mapping
+        - address (A)--> straight mapping from domain name to IP address
+        - canonical name (CNAME)-->map from one domain name to another one (alias)
+    - Process: put domain name in browser, browser checks to see if already has the name in cache, if not contact DNS server and get IP address if in cache, if not gets from authoritative name server, if not there get error, if found in any step HTTP connection
+    - lots of caching for performance reasons--> hard if trying to update info with domain name-->use (TTL) or time to live setting so then the different layers clear cache after requested period
+45. Web services
+    - when frontend (all HTML, CSS, JavaScript, and image files) requests from webserver--> uses HTTPS protocol
+    - ALL web programming requests between devices use HTTPS to exchange data
+    - from frontend JavaScript--> requests to external services anywhere
+    - to make web service request (give URL of web service to fetch function)
+    - Creat own web service --> will provide static frontend files, functions to handle fetch requests for storing data, providing security, running tasks, executing application logic in background, and communicating with other users
+    - functionality-->backend
+    - functions provided by webservice--> endpoints (APIs)
+    - access web service endpoints from frontend JavaScript with fetch function
+46. URL
+    - Uniform Resource Locator (URL) represents location of web resource
+    - web resources--> web page, font, image, video stream, database record, JSON object, or more ephemeral (visitation counter or gaming session)
+    - many parts with punctuation-->only scheme and domain name are required
+          -Scheme (ex. https)--> protocol required to ask for resource (usually HTTPS but could be FTP or MAILTO)
+          - Domain name (ex. byu.edu)--> owns resource represented by URL
+          - Port (ex. 3000)-->specifies numbered network port used to connect to domain server (lower number ports for common internet protocols, higher number ports used for any purpose) (port 80-->HTTP or port 443-->HTTPS)
+          - Path (ex. /school/byu/user/8014)-->path to resource on domain, resource does not have to physically be located on file system with path, could just be a logical path representing endpoint parameters, database table, or object schema
+          - Parameters (ex. filter=names&hightlight=intro,summary)-->represents a list of key value pairs (provides additional qualifies on resource represented by path), could be a filter on returned resource or how to highlight the resource, parameters sometimes called query string
+          - Anchor (ex. summary)-->represents sub-location in resource, for HTML pages represents request for browser to automatically scrll to element with an ID that matches the anchor, Anchor sometimes called the hash or fragment ID
+      - could proved user name and password before domain name (how access was authenticated before) but no longer used for security
+      - Uniform Resource Name (URN)--> resource name that does not specify location info
+      - Uniform Resource Identifier (URI)-->refers to either URL or URN
+47. Port
+    - To connect device to internet, need IP address and numbered port
+    - Port numbers allow device to support multiple protocols (HTTP,HTTPS, FTP,SSH) and services (search, document, authentication)
+    - Ports can be exposed externally or only used internally on device
+    - IANA, internet govering body, defines standard usage for port numbers
+    - Ports 0 to 1023 represent standard protocol
+    - web services should aboid these ports unless porviding protocol represented by standard
+    - Ports 1024 to 49151 represents ports assigned to requesting entities
+    -     common for ports to be used by services running internally on a device
+    - Ports 49152 to 65535 are considered dynamic and are used to create dynamic connections to device
+    - Common Ports
+    - 20-->File Transfer Protocol (FTP) for data transfer
+    - 22-->Secure Shell (SSH) for connecting remote devices
+    - 25-->Simple Mail Transfer Protocol (SMTP) for sending email
+    - 53-->Domain Name System (DNS) for looking up IP addresses
+    - 80-->Hypertext Transfer Protocol (HTTP) for web requests
+    - 110-->Post Office Protocol (HTTP) for web requests
+    - 123-->Network Time Protocol (NTP) for managing time
+    - 161-->Simple Network Management Protocol (SNMP) for managing network devices such as routers or printers
+    - 194-->Internet Relay Chat (IRC) for chatting
+    - 443-->HTTP Secure (HTTPS) for secure web requests
+    - For web server--> externally exposed port 22 so I could use SSH to open remote console on server, port 443 for secure HTTP communicationa dn port 80 for unsecure HTTP communication
+    - Caddy is listening on ports 80 and 443 (automatically redirects from 80 to 443)
+    - for 443, Caddy examines path and if matches static file, returns file
+    - if matches a definition for a gateway service, makes connection to that service's port and passes request to service
+    - Ensure that different web services use different port to communicate on
+    - Simon is run on port 3000, startup service uses port 4000 (cannot repeat port, be consistent)
+48. HTTP
+    - Hypertext Transfer Protocol (HTTP) is how web talks
+    - Protocol used for web browser to make request to web server (exchanged HTTP requests and responses)
+    - see exchange by using browser debugger or console tool "curl"
+    - General syntax for HTTP request:(<verb> <url path, parameters, anchor> <version>[<header key: value>]*[ <body>])
+    - after version are optional headers defined by key value pairs
+    - optional body, delimited from headers with two new lines
+    - resource type is always a MIME type defined by IANA
+    - General syntax for HTTP response :(<version> <status code> <status string>[<header key: value>]*[ <body>])
+    - similar to request-->main difference is that first line represents version and status of response
+    - VERBS
+        - GET--> get requested resource (single or resource representing list of resources)
+        - POST--> create new resource, body of request contains resource, response should include unique ID of newly created resource
+        - PUT--> update a resource, either URL path, HTTP header, or body must contain unique ID of resource being updated, body of request should contain updated resource, body of response could contain resulting updated resource
+        - DELETE--> delete resource, either URL path or HTTP header needs to have unique ID of resource to be deleted
+        - OPTIONS-->get metadata about resource, only HTTP headers are returned (not the resource)
+    - STATUS CODES
+          - 1__-->Informational
+              - 100-->Continue (service working on request)
+          - 2__-->Success
+              -200-->Sucess (requested resource found and returned)
+              -201-->Created (request successful and new resource created)
+              -204-->No content (successful but no resource returned)
+          - 3__-->Redirect to some other location, or previously cached resource still valid
+              -304-->Not Modified (cached version of resource still valid)
+              -307-->Permanent redirect (resource no longer at request location, new location given in response location header)
+              -308-->Temporary redirect (temp located different place, temp location givenin response location header)
+          - 4__-->Client errors (request invalid)
+              -400-->Bad request (request malformed or invalid)
+              -401-->Unauthorized (valid authentication token not give)
+              -403-->Forbidden (provided authentication token not authorized for resource)
+              -404-->Not found (unknown resource requested)
+              -408-->Request timeout (request takes too long)
+              -409-->Conflict (provided resource represents an out of date version of resource)
+              -429-->Too many requests (client making too many requests in too short amount of time)
+          - 5__-->Server errors (request cannot be fulfilled b/c error on server)
+              -500-->Internal Server Errror (server failed to properly process the request)
+              -503-->Service unavailable (server temporarily down, client should try again with exponential back off)
+    - HEADERS
+          - specify metadata about request or response
+          - Common headers
+          - Authorization (ex. Bearer bskfjjaslkdjf)-->token that authorized user making request
+          - Accept (ex. image/*)-->format the client accepts, may include wildcards
+          - Content-Type (ex. text/html;charset=utf-8)-->format of content being sent
+          - Cookie (ex. SessionID=sjdlf;)-->Key value pairs that are generated by the server and stored on client
+          - Host (ex. info.cern.ch)-->domain name of server, required in all requests
+          - Origin (ex. cs260.click)-->identifies the origin that caused request (host may only allow requests from specific origins)
+          - Access-Control-Allow-Origin (ex. https://csd260.click)-->Server response of what origins can make request (could include wildcard)
+          - Content-Length (ex. 368)-->number of bytes contained in response
+          - Cache-Control (ex. public, max-age=604800)-->tells client how it can cache the response
+          - User-Agent (ex. Mozilla/5.0 (Macintosh)-->client application making request
+    - Body-->defined by Content-Type header (could be HTML text, binary image format, JSON, or JavaScript)-->client can specify accepted formates in accept header
+    - Cookies
+          - HTTP is stateless (does not know about previous or future requests)
+          - Cookies allow state to be tracked (generated by server and passed to client as HTTP header)
+          - Client then caches the cookie and returns it as HTTP header back to server on subsequent requests
+          - Allows server to remember things about language, authentication
+          - Allows servers to track and share what user does
+49. Fetch
+    - fetch API-->preferred way to make HTTP requests
+    - "fetch" function is built into browser's JavaScript runtime
+    - fetch takes URL and returns a promise
+    - promise "then" function takes callback function (asynchronously called when requested URL content obtained)
+    - if returned content is "application/json" type-->use json function on response object to convert to JavaScript
+    - if request method unspecified, defaults to GET
+    - example: fetch('https://quote.cs260.click')
+                  .then((response) => response.json())
+                  .then((jsonResponse) => {
+                    console.log(jsonResponse);
+                  });
+      - POST request--> put in HTTP method and headers as option parameters
+      - example: fetch('https://jsonplaceholder.typicode.com/posts', {
+                      method: 'POST',
+                      body: JSON.stringify({
+                        title: 'test title',
+                        body: 'test body',
+                        userId: 1,
+                      }),
+                      headers: {
+                        'Content-type': 'application/json; charset=UTF-8',
+                      },
+                    })
+                      .then((response) => response.json())
+                      .then((jsonResponse) => {
+                        console.log(jsonResponse);
+                      });
+50. Node web service
+    - With JavaScript-->write code that listens on network port, receives HTTP requests, processes them, responds
+    - Create simple web service with this and then execute using Node.js
+    - callback function takes request (req) and response (res)
+    - called whenever server receives an HTTP request
+    - real web service-->examine HTTP path and return meaningful content based on purpose of endpoint
+    - server.listen-->given port and blocks until program is terminated
+    - Nodemon package-->wrapper around node and watches for files in project directory to change, when something saved-->automatically restart node
+51. Express
+    - Node module that must be installed
+    - supports routing requests for service endpoints, manipulating HTTP requests with JSON body content, generating HTTP responses, using middleware to add functionality
+    - revolves on creating and using HTTP routing and middleware functions
+    - express constructor to create express application and listen for HTTP requests on desired port
+    - example: const express = require('express');
+                const app = express();
+                app.listen(8080);
+    - with app object-->can add HTTP routing and middleware functions to application
+    - Defining routes--> how HTTP endpoints are implemented in Express
+    - routes call function based upon HTTP path
+    - app object supports all HTTP verbs as functions on object (app.get())
+    - example: app.get('/store/provo', (req, res, next) => {
+                      res.send({name: 'provo'});
+                    });
+    - use next if routing function wants another function to generate response
+    - path parameters by prefixing with :
+    - example: app.get('/store/:storeName', (req, res, next) => {
+                  res.send({name: req.params.storeName});
+                });
+    - reference parameters using req.params object
+    - can have wildcard syntax or regex in path pattern
+    - examples: // Wildcard - matches /store/x and /star/y
+            app.put('/st*/:storeName', (req, res) => res.send({update: req.params.storeName}));
+            // Pure regular expression
+            app.delete(/\/store\/(.+)/, (req, res) => res.send({delete: req.params[0]}));
+    - if next is not called, no following middleware functions will be invoked
+    - Middleware and mediator (Express in our case)
+    - Middleware represents componentized pieces of functionality
+    - Mediator loads middleware components and determines order of execution
+    - request to mediator, to middleware components
+    - Express has middleware functions (default and install, can write own)
+    - middleware function similar to routing function(which are middleware but only called if pattern matches)
+    - middleware functions always called for every HTTP request unless preceding function does not call next
+    - function middlewareName(req, res, next)
+    - example of creating own: app.use((req, res, next) => {
+                                      console.log(req.originalUrl);
+                                      next();
+                                    });
+    - Middleware (app.use([path,]callback(req,res,next)))
+    - order matters--> order that add middleware to app object controls order they are called, stops when no next called
+    - built-in example: app.use(express.static('public'));
+    - automatically calls next-->check others 
+    - 3rd party--> include package in require function, often for functions to add feilds so other middleware can access functionality
+    - handle error middleware: function errorMiddlewareName(err, req, res, next), can have it throw error
+    - if called curl on error endpoint, see response
+    - endpoints-->API calls you can make, functions you can call through URL
+52. SOP and CORS
+    - Cross-origin request (request from one domain and display from other) used to be allowed but hackers can take advantage
+    - Use Same Origin Policy (SOP) now--> only allows JavaScripte to make requests to domain if domain user is viewing (security and complications)
+    - Cross Origin Resource Sharing (CORS)--> allows client to specify origin of request and let server respond with what is allowed, if don't specify (assume same origin)
+    - browser protects user-->only meant to alert user of nefarious intentions, hacker can still proxy request and ignore Access-Control-Allow-Origin header
+53. Service Design
+    - Web services provide interactive functionality
+    - Need good design that will result in increased productivity, satisfied users, and lower processing costs
+    - model teh application objects and interactions (from user POV)
+    - Create sequence diagram-->defines necessary endpoints
+    - Web services provided over HTTP (influences design)
+    - leverage HTTP verbs or other file types so don't recreate functionality
+    - cache servers--> increase performance
+    - edge servers--> bring content closer
+    - replication servers--> provide redundant copies of content/more resilient to network failures
+    - Web service has multiple service endpoints (API or Application Programming Interface (could be one or many))
+    - Each enpoint has single functional purposse
+    - Grammatical-->resource (noun), act on it with verb
+    - Readable-->clearly readable in URL path
+    - Discoverable-->as expose resources that store other resources provide the endpoints for them (then only need to remember the top level and can access everything else)
+    - Compatible-->Make it so can add new functionality w/o breaking existing, clients of service endpoints should ignore anything they don't understand
+    - Simple--> keep endpoints focused on primary resources (avoid adding duplicate or parallel access), only one way to act on resource
+    - Documented-->make uses of tools (like Open API Specification) to provide client libraries for endpoints and a sandbox for experimentation, make initial draft of your endpoint documentation
+    - Remote Procedure Calls (RPC) exposes service endpoints as simple function calls
+    - When used over HTTP, leverages POST HTTP verb, actual verb/subject of function call is represented by function name, name of function is entire path of URL or parameter in POST body
+    - examples: POST /updateOrder HTTP/2
+                {"id": 2197, "date": "20220505"}
+                POST /rpc HTTP/2
+                {"cmd":"updateOrder", "params":{"id": 2197, "date": "20220505"}}
+    - Advantage of RPC is that it maps directly to function calls that exist within server (could be disadvantage because directly exposes the inner workings of service, creates coupling between endpoints and implementation)
+    - Representational State Transfer (REST) takes advantage of principles of HTTP
+    - REST HTTP verbs always act on resource
+    - Operations on resource impact state of resources
+    - allows for caching functionality of HTTP to work optimally
+    - example: PUT /order/2197 HTTP/2
+                {"date": "20220505"}
+    - GraphQL--> focuses on manipulation of data
+    - query that specifies desired data and how it should be joined and filtered
+    - reduces number of calls-->sends single query requesting all infoin big JSON response
+    - removes logic of parsing endpoints and mapping requests to specific resource
+    - in GraphQL only one endpoint (query endpoint)
+    - downside of flexibility is that client has power to consume resources on server
+54. PM 2
+    - To keep programs running after shutdown, register as daemon
+    - PM 2 has web services continue running as a daemon and easy way to start/stop services
+    - should not need to touch files but if services not running, commands
+          - pm2 ls-->list all of the hosted node processes
+          - pm2 monit--> visual monitor
+          - pm2 start index.js -n simon --> add a new process with an explicit name 
+          - pm2 start index.js -n startup --4000 -->add a new process with an explicit name and port parameter
+          - pm2 stop simon --> stop a process
+          - pm2 restart simon --> restart a process
+          - pm2 delete simon --> delete a process from being hosted
+          - pm2 delete all --> delete all processes
+          - pm2 save --> save the current processes across reboot
+          - pm2 restart all ---> reload all of the processes
+          - pm2 restart simon --update-env --> reload process and update the node version to the current environment definition
+          - pm2 update --> reload pm2
+          - pm2 start env.js --watch-- ignore-watch="node_modules" -->automatically reload service when index.js changes
+          - pm2 describe simon --> describe detailed process info
+          - pm2 startup --> displays the command to run to keep PM2 running after a reboot
+          - pm2 logs simon --> displays process logs
+          - pm2 env 0 --> display environment variables for process (Use pm2 ls to get process ID)
+    -  
+55. 
+56. 
