@@ -3,6 +3,7 @@ body {
     flex-direction: column;
     height: 80vh;
     text-align: center;
+    justify-content: center;
 }
 
 header {
@@ -33,7 +34,7 @@ menu {
     flex-direction: row !important;
     list-style: none;
     border-bottom: solid thin;
-    text-align: center;
+    justify-content: center;
 }
 
 menu .nav-item {
