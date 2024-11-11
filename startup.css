@@ -8,7 +8,6 @@ body {
 
 header {
     height: 10vh;
-    text-align: center;
 }
 
 main {
@@ -22,10 +21,9 @@ main {
 
 footer {
     border-top: solid thin;
-    text-align:center;
-    padding: 3px;
+    text-align: center;
     bottom: 0;
-    height: 10vh;
+    height: 10px;
 }
 
 menu {

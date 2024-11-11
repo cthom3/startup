@@ -60,6 +60,11 @@ div.recipe-card {
     flex-direction: row !important;
 }
 
+images{
+    max-width: .1vw;
+    max-height: .1vw;
+}
+
 section.extras{
     flex: 1;
     display: flex;

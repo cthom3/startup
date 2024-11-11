@@ -4,23 +4,31 @@
         <meta charset="UTF-8" />
         <!-- Don't scale viewport automatically--> 
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="add.css" />
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+            crossorigin="anonymous"
+        />
     </head>
 
-    <body>
-        <main>
-            <form>
+    <body class="bg-secondary text-light">
+        <main class="container-fluid">
+            <div>
                 <label>Name:</label>
-                <input type="text"><br>
+                <input class="form-control" type="text"><br>
                 <label>Type:</label>
-                <input type="text"><br>
+                <input class="form-control" type="text"><br>
                 <label>Ingredient:</label>
-                <input type="text"><br>
-                <button>Add Ingredient</button><br>
+                <input class="form-control" type="text"><br>
+                <button class="btn btn-primary">Add Ingredient</button><br>
                 <label>Directions:</label>
-                <input type="text"><br>
-                <button>Add Step</button><br>
-                <button>Add Rating</button>
-            </form> 
+                <input class="form-control" type="text"><br>
+                <button class="btn btn-primary">Add Step</button>
+                <button class="btn btn-primary">Add Rating</button>
+                <button class="btn btn-primary">Save</button>
+            </div> 
         </main>
         <footer>
             <a href="recipes.html">Back to Recipes</a>
