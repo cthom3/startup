@@ -1,14 +1,12 @@
 body {
     display: flex;
     flex-direction: column;
-    height: 100vh;
-    text-align: center;
     justify-content: center;
 }
 
 header {
-    height: 10vh;
-    text-align: center;
+    top:0;
+    height: 110px;
 }
 
 main {
@@ -22,22 +20,29 @@ main {
 
 footer {
     border-top: solid thin;
-    text-align:center;
+    text-align: center;
     bottom: 0;
     height: 10px;
 }
 
 menu {
-    flex: 1;
     display: flex;
     flex-direction: row !important;
     list-style: none;
+}
+
+nav {
+    top:0;
+    height:21%;
+    text-align: center;
+    background-color: #6c757d;
+    justify-content: center; 
     border-bottom: solid thin;
-    justify-content: center;
 }
 
 menu .nav-item {
-    margin: 1em;
+    margin-left: 1em;
+    margin-right: 1em;
     text-align: center;
 }
 
@@ -72,9 +77,4 @@ section.extras{
     main {
         flex: 1 100vh;
     }
-}
-
-a {
-    text-align: center;
-    color: white;
 }
