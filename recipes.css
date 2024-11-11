@@ -1,7 +1,7 @@
 body {
     display: flex;
     flex-direction: column;
-    height: 80vh;
+    height: 100vh;
     text-align: center;
     justify-content: center;
 }
@@ -23,9 +23,8 @@ main {
 footer {
     border-top: solid thin;
     text-align:center;
-    padding: 3px;
     bottom: 0;
-    height: 10vh;
+    height: 10px;
 }
 
 menu {
@@ -56,12 +55,14 @@ div.recipe-card {
     flex-direction: row !important;
 }
 
-section.extra{
+section.extras{
+    flex: 1;
     display: flex;
     flex-direction: row !important;
+    list-style: none;
 }
 
-@media (max-height: 400px) {
+@media (max-height: 100px) {
     header {
         display: none;
     }
