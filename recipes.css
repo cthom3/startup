@@ -2,6 +2,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    text-align:center;
 }
 
 header {
@@ -34,16 +35,14 @@ menu {
 nav {
     top:0;
     height:21%;
-    text-align: center;
+    justify-content: center;
     background-color: #6c757d;
-    justify-content: center; 
     border-bottom: solid thin;
 }
 
 menu .nav-item {
     margin-left: 1em;
     margin-right: 1em;
-    text-align: center;
 }
 
 div {
