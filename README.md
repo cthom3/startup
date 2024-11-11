@@ -1,5 +1,23 @@
 # CS-260-Startup
 
+## Startup CSS:
+Stylying of application for final appearance
+1. Header, footer, and main content body
+    - The header consists of the title and navigation bar and remains at the top with resizing unless the page becomes too small, at which point it disappears
+    - The footer is consists of name and github link and stays at the bottom of the page
+    - The main content changes from page to page, but scrolls if necessary and has the pictures, buttons, inputs, and text needed for the website
+2. Navigation elements
+    - The navigation or menu is located at the top of the page in the header and stays visible even if the page scrolls
+3. Responsive to window resizing
+    - Responds well to different window resizing 
+4. Application elements
+    - Great spacing and consistent formatting
+5. Application text content
+    - Consistent fonts and format
+    - good contrast between colors of background and text
+6. Application images
+    - Images, particularly those on the recipes page, resize as needed and are formatted in columns instead of rows if the page is too narrow.
+
 ## Startup HTML:
 1. HTML pages for each component of application
     - Home page--> login and create account
