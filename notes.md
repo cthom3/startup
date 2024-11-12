@@ -936,6 +936,35 @@
           - pm2 startup --> displays the command to run to keep PM2 running after a reboot
           - pm2 logs simon --> displays process logs
           - pm2 env 0 --> display environment variables for process (Use pm2 ls to get process ID)
-    -  
-55. 
-56. 
+55. Development and production environments
+    - Separate development from release (could also be staging, internal testing, and external testing environemnts)
+    - If seeking 3rd party security cerification (SOC2 compliance)-->environmentss must be strictly separate
+    - Use automated integration process (contnuous integration (CI)) which will review code, lint, build, test, stage, test again, then deploy and let others know of release
+    - For us-->use both but don't mix them-->deploy applicaation using CI (for us console shell script deploy.sh)
+    - Advantage of using automated deployment process--> reproducible, encourages quick iterating (b/c easier to deploy)
+    - ./deployService.sh -k ~/prod.pem -h yourdomain.click -s simon
+          - '-k' --> provides credential file necessary to access production environement
+          - '-h' --> domain name
+          - '-s'--> name of application being deployed
+    - When deploy file run-->
+          - parse command parameters
+          - copies source files into dist (distribution directory)
+          - target directory deleted by executing commands remotely using ssh (secure shell program)
+          - dist copied to production environment using secure copy program (scp)
+          - Use shh-->installs node packages and restarts service daemon (PM2)
+          - Clean up development environment by deleting distribution package    
+56. Uploading Files
+    - to upload files from frontend to backend use HTML input element of type file on frontend and multer NPM package on backend
+    - frontend JavaScript handles uploading files, uses filename to set src attribute of image in DOM
+    - Multer reads files from HTTP request, enforces size limit of upload, store file in uploads directory
+    - Can also handle requests for static files (so serve up frontend code), handles error, provides get endpoint to serve up file from uploads directory
+    - Where to store files
+          - Not server--> not a lot of space, servers are transient, not backed up, if have multiple application server, can't assume that the one that has the data is going to be the one you request a download from
+          - Use dedicated storage service that has durability guarantees (not tied to compute capacity), can be accessed by multiple application servers 
+57. Storage services
+    - Can store in database service -->but simpler solution that is cheaper
+    - Don't store files on server-->limited space, server is temporary, need backup copies
+    - AWS S3--> unlimited capacity, only pay for storage used, optimized for global access, keeps multiple redundant copies of every files, version the files, performant, supports metadata tags, can make files publicly available directly from S3, can keep files private and only accessible to your application
+    - We will not use storage services 
+58. 
+59. 
