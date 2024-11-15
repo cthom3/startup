@@ -965,6 +965,83 @@
     - Can store in database service -->but simpler solution that is cheaper
     - Don't store files on server-->limited space, server is temporary, need backup copies
     - AWS S3--> unlimited capacity, only pay for storage used, optimized for global access, keeps multiple redundant copies of every files, version the files, performant, supports metadata tags, can make files publicly available directly from S3, can keep files private and only accessible to your application
-    - We will not use storage services 
-58. 
-59. 
+    - We will not use storage services
+
+Adding Service to your React project-->need backend (index.js (Express stack) in directory called service), frontend (put in fetch statements that call services)
+Debug services in development environment use viteconfig file that routes certain calls to a different port, need to run a node instance and tell it to listen on the port
+
+58. Data Services
+    - SQL databases usually were data service solution
+    - NoSQL-->don't use general purpose but have certain types they specialize in (document, graph, JSON, time, sequence, key-value pair data)
+    - Examples:
+          - MySQL-->relational queries
+          - Redis --> memory cached objects
+          - ElasticSearch-->Ranked free text
+          - MongoDB--> JSON objects (we use this one)
+          - DynamoDB-->key value pairss
+          - Neo4J-->Graph based data
+          - InfluxDB--> Time series data
+    - MongoDB
+          - no strict schema requirement
+          - schema can morph organically as data model evolves
+          - To add field--> just insert field into documents
+          - Query syntax is similar to JavaScript
+      - install mongodb
+      - use MongoClient object to make client connection to database (need username, passwork, hostname)
+      - Example:
+            const { MongoClient } = require('mongodb');
+            const userName = 'holowaychuk';
+            const password = 'express';
+            const hostname = 'mongodb.com';
+            const url = `mongodb+srv://${userName}:${password}@${hostname}`;
+            const client = new MongoClient(url);
+    - get collection object-->allows insert and query for documents
+    - insert JavaScript object as Mongo document using "insertOne"
+    - when insert document, if database or collection does not exist, Mongo automatically creates them
+    - when document inserted, automatically assigned unique ID
+    - Example:
+        const collection = client.db('rental').collection('house');
+        const house = {
+          name: 'Beachfront views',
+          summary: 'From your bedroom to the beach, no shoes required',
+          property_type: 'Condo',
+          beds: 1,
+        };
+        await collection.insertOne(house);
+    - To query for document, use find function on collection object
+    - find function is asynchronous and use await keyword
+    - if don't include parameters in find, it will return all documents in collection (including ID)
+    - specify options with order and limit results
+    - infrastructure is often given to 3rd parties-->development focuses on application
+    - Only load credentials when application executes
+    - write JSON configuration file with credentials that is dynamically loaded into JavaScript to make database connection
+    - use configuration file in development environement and deploy to production environment, don't commit it to Github (place in git.ignore)
+59. Authorization services
+    - authenticate user by asking for information, remember that user has authenticated by storing authentication token on user device
+    - token is tored in cookie that is passed to web service with each request
+    - store authorization (what they can access) for the user
+    - give to authorization service-->has standard protocols (OAuth, SAML, OIDC)
+          - can use Single Sign On (SSO) (allows user to use same credentials for multiple web applications) or Federated Login (allows user to log in once, authenticated token is reused automatically to log user in to multiple websites ex. Google)
+60. Account creation and login
+    - users need to uniquely identify themselves
+          - two service endpoints
+          - Create credential-->takes email,password and return cookie with authentication token and user ID--> returns 409 conflict statuds code if email already exists
+          - authenticate or login-->takes email, password, returns cookie with authentication token and user ID-->if email does not exist or password is bad-->returns 401 unauthorized status code
+          - once authenticated, control access to other endpoints
+          - use getMe endpoint to get info from currently authenticated user (returns 401 if user does not exist)
+    - Build web services using express
+    - Handling requests (see code)
+    - use uuid package (Universally Unique Identifier)--> to generate authentication token
+    - use bcrypt to hash passwords
+    - cookie-parser pagckage provides middleware for cookies, make secure
+    - use httpOnly (tells browser not to allow JavaScript running on browser to read cookie)
+    - use secure (requires HTTPS to be used when sending cookie back to server
+    - sameSite--> only return the cookie to domain that generated it
+    - bcrypt.compare-->compare provided password with hashed password in database
+    - use curl '-c' and '-b' parameters tell curl to store and use cookies with the file
+61. Simon Login
+    - When user logs out, cookie is removed
+    - service endpoints in index.js
+    - New Express router (secureApiRouter) wraps existing router to add middleware function 
+62. 
+63. 
