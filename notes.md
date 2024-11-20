@@ -1043,5 +1043,50 @@ Debug services in development environment use viteconfig file that routes certai
     - When user logs out, cookie is removed
     - service endpoints in index.js
     - New Express router (secureApiRouter) wraps existing router to add middleware function 
-62. 
-63. 
+62. WebSocket
+    - HTTP is client-server architecture (client requests, server responds)
+    - does not work for asynchronous with communication, notifications, or peer-to-peer communication
+    - created WebSocket-->fully duplexed (starts as client-server and then changes to peer-to-peer (send data at any time)
+    - still only between 2 parties
+    - if more people, server acts as intermediary (forwarding messages between poeple)
+    - create WebSocket object by specifying port of communication
+    - send messages with send function
+    - register callback using onmessage function (receive messages)
+    - example:const socket = new WebSocket('ws://localhost:9900');
+                socket.onmessage = (event) => {
+                  console.log('received: ', event.data);
+                };
+                socket.send('I am listening');
+    - ws package creates WebSocketServer
+          - when specify a port--> tell server to listen for HTTP connections and upgrade to WebSocket if request has (connection:Upgrade)
+63. Debugging WebSocket
+    - use VS Code to debug server
+          - create directory
+          - npm init -y
+          - npm install ws
+          - create main.js file with this code
+                      const { WebSocketServer } = require('ws');
+                const wss = new WebSocketServer({ port: 9900 });
+                wss.on('connection', (ws) => {
+                  ws.on('message', (data) => {
+                    const msg = String.fromCharCode(...data);
+                    console.log('received: %s', msg);
+                    ws.send(`I heard you say "${msg}"`);
+                  });
+                  ws.send('Hello webSocket');
+                });
+          - set breakpoints on ws.send lines
+          - start debugging with F5 (choose Node.js as debugger)
+    - use Chrome to debug client
+          - open using F12
+          - executing code-->hit server breakpoint
+              const socket = new WebSocket('ws://localhost:9900');
+                socket.onmessage = (event) => {
+                  console.log('received: ', event.data);
+                };
+          - select Network tab and HTTP messsage that was generated
+          - click messages tab to see WebSocket messages
+          - send socket.send('I am listening');
+          - causes second server breakpoint
+64. 
+65. 
