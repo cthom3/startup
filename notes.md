@@ -936,6 +936,157 @@
           - pm2 startup --> displays the command to run to keep PM2 running after a reboot
           - pm2 logs simon --> displays process logs
           - pm2 env 0 --> display environment variables for process (Use pm2 ls to get process ID)
-    -  
-55. 
-56. 
+55. Development and production environments
+    - Separate development from release (could also be staging, internal testing, and external testing environemnts)
+    - If seeking 3rd party security cerification (SOC2 compliance)-->environmentss must be strictly separate
+    - Use automated integration process (contnuous integration (CI)) which will review code, lint, build, test, stage, test again, then deploy and let others know of release
+    - For us-->use both but don't mix them-->deploy applicaation using CI (for us console shell script deploy.sh)
+    - Advantage of using automated deployment process--> reproducible, encourages quick iterating (b/c easier to deploy)
+    - ./deployService.sh -k ~/prod.pem -h yourdomain.click -s simon
+          - '-k' --> provides credential file necessary to access production environement
+          - '-h' --> domain name
+          - '-s'--> name of application being deployed
+    - When deploy file run-->
+          - parse command parameters
+          - copies source files into dist (distribution directory)
+          - target directory deleted by executing commands remotely using ssh (secure shell program)
+          - dist copied to production environment using secure copy program (scp)
+          - Use shh-->installs node packages and restarts service daemon (PM2)
+          - Clean up development environment by deleting distribution package    
+56. Uploading Files
+    - to upload files from frontend to backend use HTML input element of type file on frontend and multer NPM package on backend
+    - frontend JavaScript handles uploading files, uses filename to set src attribute of image in DOM
+    - Multer reads files from HTTP request, enforces size limit of upload, store file in uploads directory
+    - Can also handle requests for static files (so serve up frontend code), handles error, provides get endpoint to serve up file from uploads directory
+    - Where to store files
+          - Not server--> not a lot of space, servers are transient, not backed up, if have multiple application server, can't assume that the one that has the data is going to be the one you request a download from
+          - Use dedicated storage service that has durability guarantees (not tied to compute capacity), can be accessed by multiple application servers 
+57. Storage services
+    - Can store in database service -->but simpler solution that is cheaper
+    - Don't store files on server-->limited space, server is temporary, need backup copies
+    - AWS S3--> unlimited capacity, only pay for storage used, optimized for global access, keeps multiple redundant copies of every files, version the files, performant, supports metadata tags, can make files publicly available directly from S3, can keep files private and only accessible to your application
+    - We will not use storage services
+
+Adding Service to your React project-->need backend (index.js (Express stack) in directory called service), frontend (put in fetch statements that call services)
+Debug services in development environment use viteconfig file that routes certain calls to a different port, need to run a node instance and tell it to listen on the port
+
+58. Data Services
+    - SQL databases usually were data service solution
+    - NoSQL-->don't use general purpose but have certain types they specialize in (document, graph, JSON, time, sequence, key-value pair data)
+    - Examples:
+          - MySQL-->relational queries
+          - Redis --> memory cached objects
+          - ElasticSearch-->Ranked free text
+          - MongoDB--> JSON objects (we use this one)
+          - DynamoDB-->key value pairss
+          - Neo4J-->Graph based data
+          - InfluxDB--> Time series data
+    - MongoDB
+          - no strict schema requirement
+          - schema can morph organically as data model evolves
+          - To add field--> just insert field into documents
+          - Query syntax is similar to JavaScript
+      - install mongodb
+      - use MongoClient object to make client connection to database (need username, passwork, hostname)
+      - Example:
+            const { MongoClient } = require('mongodb');
+            const userName = 'holowaychuk';
+            const password = 'express';
+            const hostname = 'mongodb.com';
+            const url = `mongodb+srv://${userName}:${password}@${hostname}`;
+            const client = new MongoClient(url);
+    - get collection object-->allows insert and query for documents
+    - insert JavaScript object as Mongo document using "insertOne"
+    - when insert document, if database or collection does not exist, Mongo automatically creates them
+    - when document inserted, automatically assigned unique ID
+    - Example:
+        const collection = client.db('rental').collection('house');
+        const house = {
+          name: 'Beachfront views',
+          summary: 'From your bedroom to the beach, no shoes required',
+          property_type: 'Condo',
+          beds: 1,
+        };
+        await collection.insertOne(house);
+    - To query for document, use find function on collection object
+    - find function is asynchronous and use await keyword
+    - if don't include parameters in find, it will return all documents in collection (including ID)
+    - specify options with order and limit results
+    - infrastructure is often given to 3rd parties-->development focuses on application
+    - Only load credentials when application executes
+    - write JSON configuration file with credentials that is dynamically loaded into JavaScript to make database connection
+    - use configuration file in development environement and deploy to production environment, don't commit it to Github (place in git.ignore)
+59. Authorization services
+    - authenticate user by asking for information, remember that user has authenticated by storing authentication token on user device
+    - token is tored in cookie that is passed to web service with each request
+    - store authorization (what they can access) for the user
+    - give to authorization service-->has standard protocols (OAuth, SAML, OIDC)
+          - can use Single Sign On (SSO) (allows user to use same credentials for multiple web applications) or Federated Login (allows user to log in once, authenticated token is reused automatically to log user in to multiple websites ex. Google)
+60. Account creation and login
+    - users need to uniquely identify themselves
+          - two service endpoints
+          - Create credential-->takes email,password and return cookie with authentication token and user ID--> returns 409 conflict statuds code if email already exists
+          - authenticate or login-->takes email, password, returns cookie with authentication token and user ID-->if email does not exist or password is bad-->returns 401 unauthorized status code
+          - once authenticated, control access to other endpoints
+          - use getMe endpoint to get info from currently authenticated user (returns 401 if user does not exist)
+    - Build web services using express
+    - Handling requests (see code)
+    - use uuid package (Universally Unique Identifier)--> to generate authentication token
+    - use bcrypt to hash passwords
+    - cookie-parser pagckage provides middleware for cookies, make secure
+    - use httpOnly (tells browser not to allow JavaScript running on browser to read cookie)
+    - use secure (requires HTTPS to be used when sending cookie back to server
+    - sameSite--> only return the cookie to domain that generated it
+    - bcrypt.compare-->compare provided password with hashed password in database
+    - use curl '-c' and '-b' parameters tell curl to store and use cookies with the file
+61. Simon Login
+    - When user logs out, cookie is removed
+    - service endpoints in index.js
+    - New Express router (secureApiRouter) wraps existing router to add middleware function 
+62. WebSocket
+    - HTTP is client-server architecture (client requests, server responds)
+    - does not work for asynchronous with communication, notifications, or peer-to-peer communication
+    - created WebSocket-->fully duplexed (starts as client-server and then changes to peer-to-peer (send data at any time)
+    - still only between 2 parties
+    - if more people, server acts as intermediary (forwarding messages between poeple)
+    - create WebSocket object by specifying port of communication
+    - send messages with send function
+    - register callback using onmessage function (receive messages)
+    - example:const socket = new WebSocket('ws://localhost:9900');
+                socket.onmessage = (event) => {
+                  console.log('received: ', event.data);
+                };
+                socket.send('I am listening');
+    - ws package creates WebSocketServer
+          - when specify a port--> tell server to listen for HTTP connections and upgrade to WebSocket if request has (connection:Upgrade)
+63. Debugging WebSocket
+    - use VS Code to debug server
+          - create directory
+          - npm init -y
+          - npm install ws
+          - create main.js file with this code
+                      const { WebSocketServer } = require('ws');
+                const wss = new WebSocketServer({ port: 9900 });
+                wss.on('connection', (ws) => {
+                  ws.on('message', (data) => {
+                    const msg = String.fromCharCode(...data);
+                    console.log('received: %s', msg);
+                    ws.send(`I heard you say "${msg}"`);
+                  });
+                  ws.send('Hello webSocket');
+                });
+          - set breakpoints on ws.send lines
+          - start debugging with F5 (choose Node.js as debugger)
+    - use Chrome to debug client
+          - open using F12
+          - executing code-->hit server breakpoint
+              const socket = new WebSocket('ws://localhost:9900');
+                socket.onmessage = (event) => {
+                  console.log('received: ', event.data);
+                };
+          - select Network tab and HTTP messsage that was generated
+          - click messages tab to see WebSocket messages
+          - send socket.send('I am listening');
+          - causes second server breakpoint
+64. 
+65. 
