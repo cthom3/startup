@@ -27,7 +27,7 @@ export function Recommendations(){
     } else{
         ratingsRow.push(
             <tr key='0'>
-                <td colSpan='4'>Be the first to rate</td>
+                <td colSpan='5'>Be the first to rate</td>
             </tr>
         );
     }

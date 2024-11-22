@@ -18,31 +18,31 @@ function App() {
         <div className='body bg-secondary text-light'>
             <header className='container-fluid'>
                 <nav className='navbar fixed-top'>
-                    <div className='navbar-brand'>
+                    <div className='navbar-brand text-light'>
                         Comfort Cooking
                     </div>
                     <menu className='navbar-nav'>
                         <li className='nav-item'>
-                            <NavLink className='nav-link' to=''>
+                            <NavLink className='nav-link text-light' to=''>
                                 Login
                             </NavLink>
                         </li>
                         {authState === AuthState.Authenticated && (
                             <li className='nav-item'>
-                                <NavLink className='nav-link' to='recipes'>
+                                <NavLink className='nav-link text-light' to='recipes'>
                                     Recipes
                                 </NavLink>
                             </li>
                         )}
                         {authState === AuthState.Authenticated && (
                             <li className='nav-item'>
-                                <NavLink className='nav-link' to='recommendations'>
+                                <NavLink className='nav-link text-light' to='recommendations'>
                                     Recommendations
                                 </NavLink>
                             </li>
                         )}
                         <li className='nav-item'>
-                            <NavLink className='nav-link' to='about'>
+                            <NavLink className='nav-link text-light' to='about'>
                                 About
                             </NavLink>
                         </li>
@@ -73,8 +73,11 @@ function App() {
 
             <footer className='bg-secondary text-light'>
                 <div className='container-fluid'>
-                    <span>Author: Catherine Applegate</span>
-                    <a className="link-light" href="https://github.com/cthom3/Startup">GitHub</a>
+                    <p>
+                        <p>Author: Catherine Applegate   -  
+                            <a className="link-light" href="https://github.com/cthom3/Startup">GitHub </a>
+                        </p>
+                    </p>
                 </div>
             </footer>
         </div>
