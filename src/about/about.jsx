@@ -9,7 +9,7 @@ export function About(props) {
     })
 
     return (
-        <main class="container-fluid">
+        <main className="container-fluid">
             <div>
                 <img src={imageUrl} alt='image'/>
                 <p>Comfort Cooking is the site to save recipes so you can find them everytime. You can share and receive recipes from others. You can save notes as well.</p>

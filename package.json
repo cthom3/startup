@@ -1,0 +1,26 @@
+{
+  "name": "startup",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Stylying of application for final appearance\r 1. Header, footer, and main content body\r     - The header consists of the title and navigation bar and remains at the top with resizing unless the page becomes too small, at which point it disappears\r     - The footer is consists of name and github link and stays at the bottom of the page\r     - The main content changes from page to page, but scrolls if necessary and has the pictures, buttons, inputs, and text needed for the website\r 2. Navigation elements\r     - The navigation or menu is located at the top of the page in the header and stays visible even if the page scrolls\r 3. Responsive to window resizing\r     - Responds well to different window resizing \r 4. Application elements\r     - Great spacing and consistent formatting\r 5. Application text content\r     - Consistent fonts and format\r     - good contrast between colors of background and text\r 6. Application images\r     - Images, particularly those on the recipes page, resize as needed and are formatted in columns instead of rows if the page is too narrow.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "vite": "^5.4.11"
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.3",
+    "react": "^18.3.1",
+    "react-bootstrap": "^2.10.5",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.28.0"
+  }
+}

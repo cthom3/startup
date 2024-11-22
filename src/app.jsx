@@ -1,8 +1,8 @@
 import React from 'react';
 import {BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
 import {Login} from './login/login';
-import {Recipes} from '.recipes/recipes';
-import {Recommendations} from '.recommendations/recommendations';
+import {Recipes} from './recipes/recipes';
+import {Recommendations} from './recommendations/recommendations';
 import {About} from './about/about';
 import {AuthState} from './login/authState';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -74,7 +74,7 @@ function App() {
             <footer className='bg-secondary text-light'>
                 <div className='container-fluid'>
                     <span>Author: Catherine Applegate</span>
-                    <a class="link-light" href="https://github.com/cthom3/Startup">GitHub</a>
+                    <a className="link-light" href="https://github.com/cthom3/Startup">GitHub</a>
                 </div>
             </footer>
         </div>
