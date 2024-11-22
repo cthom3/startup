@@ -1,7 +1,7 @@
 import React from 'react';
 import './about.css';
 
-export function About() {
+export function About(props) {
     const [imageUrl, setImageUrl]=React.useState();
 
     React.useEffect(() => {
