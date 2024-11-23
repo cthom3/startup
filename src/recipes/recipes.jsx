@@ -1,11 +1,11 @@
 import React from 'react';
 
-import {recipesDisplay} from './recipesDisplay';
+import {RecipesDisplay} from './recipesDisplay';
 
 export function Recipes(props){
     return (
         <main className='bg-secondary text-light'>
-            <recipesDisplay userName={props.userName} />
+            <RecipesDisplay userName={props.userName} />
         </main>
-    )
+    );
 }

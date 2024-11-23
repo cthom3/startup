@@ -24,7 +24,7 @@ function App() {
                     <menu className='navbar-nav'>
                         <li className='nav-item'>
                             <NavLink className='nav-link text-light' to=''>
-                                Login
+                                Account
                             </NavLink>
                         </li>
                         {authState === AuthState.Authenticated && (
@@ -73,11 +73,11 @@ function App() {
 
             <footer className='bg-secondary text-light'>
                 <div className='container-fluid'>
-                    <p>
+                    <div>
                         <p>Author: Catherine Applegate   -  
                             <a className="link-light" href="https://github.com/cthom3/Startup">GitHub </a>
                         </p>
-                    </p>
+                    </div>
                 </div>
             </footer>
         </div>
