@@ -1,8 +1,9 @@
 import React from 'react';
 import {Collapse} from 'react-collapse';
-
+import RCL, {WidthProvider} from 'react-grid-layout';
 import {Button} from 'react-bootstrap';
 import './recipesDisplay.css';
+
 
 export function RecipesDisplay(props) {
     const userName=props.userName;
@@ -36,6 +37,7 @@ export function RecipesDisplay(props) {
             updatedRecipes[newRecipe.category].push(newRecipe);
             setRecipecards(updatedRecipes);
             setNewRecipe({name: '', image: '', rating: '', link: '', category: ''});
+            closeModal();
         } else{
             alert('Please fill out all fields');
         }
@@ -110,46 +112,25 @@ export function RecipesDisplay(props) {
                     </div>
                 </div>
             )}
-            <div>
+            <div className="grid">
                 {Object.keys(recipecards).map((category) =>(
                     <div key={category}>
-                        <Button onClick={()=> toggleSectionCollapse(category)}>
+                        <Button variant="secondary" onClick={()=> toggleSectionCollapse(category)}>
                             {collapsedSection[category]? '': ''}{category}
                         </Button>
                         <Collapse isOpened={!collapsedSection[category]}>
                             <div>
-                                <div className="row">
-                                    <p className="col-sm-4">
-                                        <img src="Pancakes.jpg" alt="Pancakes" width="70%"/>
-                                    </p>
-
-                                </div>
-                                {/* <div class="container">
-                    <h4>Breakfast</h4>
-                    <div class="row">
-                        <p class="col-sm-4">
-                            <img class="images" src="Pancakes.jpg" alt="Pancakes" width="70%">
-                            <br />
-                            <a class="link-light" href="display.html">Pancakes</a>
-                            <br />
-                            <span>4.7 Stars</span> 
-                        </p>
-                        <p class="col-sm-4">
-                            <img class="images" src="Waffles.jpg" alt="Waffles" width="70%">
-                            <br />
-                            Waffles
-                            <br />
-                            <span>4.6 Stars</span> 
-                        </p>
-                        <p class="col-sm-4">
-                            <img class="images" src="Oatmeal.jpg" alt="Oatmeal" width="70%">
-                            <br />
-                            Oatmeal
-                            <br />
-                            <span>4.5 Stars</span> 
-                        </p>
-                    </div>
-                </div> */}
+                                {recipecards[category].map((recipecard, index)=>(
+                                    <div className="row">
+                                        <p className="col-sm-4">
+                                            <img src={recipecard.image} alt={recipecard.name} width="70%"/>
+                                            <br />
+                                            <a className="link-dark" href={recipecard.link}>{recipecard.name}</a>
+                                            <br/>
+                                            <span className="text-dark">{recipecard.rating}</span>
+                                        </p>
+                                    </div>
+                                ))}
                                 {/* <div>
                                     <img src={recipecards.image} alt={recipecards.name} />
                                     <h3>
