@@ -77,43 +77,8 @@ export function RecipesDisplay(props) {
 
     };
 
-    // const recipesRow=[];
-    // if (recipecards.length) {
-    //     for (const [i,recipecard] of recipecards.entries()){
-    //         recipesRow.push(
-    //             <thead>
-    //                 <tr>{recipecard.type}</tr>
-    //                 <tr>{recipecard.picture}</tr>
-    //                 <tr>{recipecard.name}</tr>
-    //                 <tr>{recipecard.rate}</tr>
-    //             </thead>
-
-    //         );
-    //     }
-    // } else {
-    //     recipesRow.push(
-    //         <tr key='0'>
-    //             <td colSpan='3'>Add your first recipe!</td>
-    //         </tr>
-    //     );
-    // }
     return (
-        // <main className='container-fluid bg-secondary text-light'>
-        //     <Button variant='primary' onClick={()=> navigate('add')}>
-        //         Add Recipes
-        //     </Button>
-        //     <table className= 'table'>
-        //         <thead className = 'table-dark'>
-        //             <tr>Type</tr>
-        //             <tr>Picture</tr>
-        //             <tr>Name</tr>
-        //             <tr>Rating</tr>
-        //         </thead>
-        //         <tbody id='ratings'>{recipesRow}</tbody>
-        //     </table>
-        // </main>
-
-        <main className='container-fluid '>
+        <main className='container-fluid bg-secondary text-light'>
             <h1>
                 My Recipes
             </h1>
@@ -156,16 +121,6 @@ export function RecipesDisplay(props) {
                                 </div>
                             ))}
                         </ResponsiveReactGridLayout>
-                            {/* <div>
-                                <img src={recipecards.image} alt={recipecards.name} />
-                                <h3>
-                                    <a href={recipecards.link}>
-                                        {recipecards.name}
-                                    </a>
-                                </h3>
-                                <p>{recipecards.rating}</p>
-                            </div> */}
-
                     </Collapse>
                 </div>
             ))}
