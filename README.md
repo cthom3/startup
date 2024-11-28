@@ -1,5 +1,18 @@
 # CS-260-Startup
 
+## Startup React:
+Used JavaScript and React for a single user with placeholders for future developments
+1. Vite Bundling
+    - Bundled!
+2. Components
+    - Login --> When you login with credentials, it takes you to a page where you can logout or continue on to recipes
+    - Database--> the recipes will be stored in database but are currently just in local storage, appear in a grid
+    - WebSocket--> Recommendations page will hold websocket with ratings of recipe of other users
+3. Router
+    - Routing between pages and components
+4. Hooks
+    - useEffect used to get info from local storage and display it for each recipe
+
 ## Startup CSS:
 Stylying of application for final appearance
 1. Header, footer, and main content body
