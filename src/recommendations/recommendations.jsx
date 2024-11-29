@@ -5,10 +5,11 @@ export function Recommendations(){
     const [ratings, setRatings]= React.useState ([]);
 
     React.useEffect(()=> {
-        const ratingsText=localStorage.getItem('ratings');
-        if (ratingsText){
-            setRatings(JSON.parse(ratingsText));
-        }
+        fetch('/api/ratings')
+            .then((response)=> response.json())
+            .then((ratings)=> {
+                setRatings(ratings);
+            });
     }, []);
 
     const ratingsRow = [];
