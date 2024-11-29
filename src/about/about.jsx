@@ -5,7 +5,14 @@ export function About(props) {
     const [imageUrl, setImageUrl]=React.useState();
 
     React.useEffect(() => {
-        setImageUrl('Oatmeal.jpg');
+        fetch(`https://foodish-api.com/`)
+            .then ((response)=> response.json())
+            .then ((data) => {
+                const containerEl=document.querySelector('#picture');
+                const apiUrl=`https://foodish-api.com/`;
+                setImageUrl(apiUrl);
+            }) 
+            .catch();
     })
 
     return (
