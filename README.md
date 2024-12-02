@@ -1,5 +1,18 @@
 # CS-260-Startup
 
+## Startup Service:
+1. Node.js/Express HTTP service
+    - Added service folder with index.js file
+2. Static middleware for frontend
+    - incorporated middleware in index.js file
+3. Calls to 3rd party endpoints
+    - called foodish API to display an image using fetch
+4. Backend service endpoints
+    - stores current user on server
+    - endpoints for ratings for recipes
+5. Frontend calls service endpoints
+    - used fetch
+
 ## Startup React:
 Used JavaScript and React for a single user with placeholders for future developments
 1. Vite Bundling
