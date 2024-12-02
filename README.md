@@ -11,7 +11,7 @@
     - stores current user on server
     - endpoints for ratings for recipes
 5. Frontend calls service endpoints
-    - used fetch
+    - used fetch functions (login/logout
 
 ## Startup React:
 Used JavaScript and React for a single user with placeholders for future developments
