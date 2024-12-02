@@ -21,16 +21,23 @@ export function Unauthenticated(props){
             method: 'post',
             body: JSON.stringify({email: userName, password: password}),
             headers: {
-                'Content-type' : 'application/json; charset=UTF-8',
+                'Content-type' : 'application/json',
             },
         });
+        console.log(response.json());
         if (response?.status === 200){
             localStorage.setItem('userName', userName);
             props.onLogin(userName);
         } else {
-            const body = await response.json();
-            setDisplayError(`Error: ${body.msg}`);
+            try {
+                const body = await response.json();
+                setDisplayError(`Error: ${body.msg}`);
+            } catch (error) {
+                setDisplayError('Unexpected error from server');
+            }
+
         }
+
     }
 
     return (

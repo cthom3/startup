@@ -2,14 +2,14 @@ import React from 'react';
 import './about.css';
 
 export function About(props) {
-    const [imageUrl, setImageUrl]=React.useState();
+    const [imageUrl, setImageUrl]=React.useState('');
 
     React.useEffect(() => {
-        fetch(`https://foodish-api.com/`)
+        fetch(`https://foodish-api.com/api/`)
             .then ((response)=> response.json())
             .then ((data) => {
                 const containerEl=document.querySelector('#picture');
-                const apiUrl=`https://foodish-api.com/`;
+                const apiUrl=data.image;
                 setImageUrl(apiUrl);
             }) 
             .catch();
@@ -18,8 +18,10 @@ export function About(props) {
     return (
         <main className="container-fluid">
             <div>
-                <img src={imageUrl} alt='image'/>
-                <p>Comfort Cooking is the site to save recipes so you can find them everytime. You can share and receive recipes from others. You can save notes as well.</p>
+                <div id='picture'>
+                    <img src={imageUrl} alt='image' width='70%'/>
+                </div>
+                <p>Comfort Cooking allows you to save recipes all in one place so you can find them everytime. You can give each recipe a rating and view the ratings of others to get new recipe ideas.</p>       
             </div>
         </main>
     );
