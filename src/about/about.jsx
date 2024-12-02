@@ -13,13 +13,13 @@ export function About(props) {
                 setImageUrl(apiUrl);
             }) 
             .catch();
-    })
+    }, []);
 
     return (
         <main className="container-fluid">
             <div>
                 <div id='picture'>
-                    <img src={imageUrl} alt='image' width='70%'/>
+                    <img src={imageUrl} alt='image' width='50%'/>
                 </div>
                 <p>Comfort Cooking allows you to save recipes all in one place so you can find them everytime. You can give each recipe a rating and view the ratings of others to get new recipe ideas.</p>       
             </div>
