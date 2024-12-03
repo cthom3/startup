@@ -28,9 +28,13 @@ export function RecipesDisplay(props) {
             });
     },[]);
 
-    React.useEffect(()=> {
-        localStorage.setItem('recipecards', JSON.stringify(recipecards));
-    })
+    async function saveRecipe(newRecipe){
+        await fetch('/api/recipe', {
+            method: 'POST',
+            headers: {'content-type': 'application/json'},
+            body: JSON.stringify(newRecipe),
+        });
+    }
 
     const AddRecipe =()=> {
         if (newRecipe.name && newRecipe.image && newRecipe.rating && newRecipe.link && newRecipe.category) {
@@ -39,6 +43,7 @@ export function RecipesDisplay(props) {
                 updatedRecipes[newRecipe.category]=[];
             }
             updatedRecipes[newRecipe.category].push(newRecipe);
+            saveRecipe(newRecipe);
             setRecipecards(updatedRecipes);
             setNewRecipe({name: '', image: '', rating: '', link: '', category: ''});
             setImagePreview(null);
