@@ -9,9 +9,9 @@
     - called foodish API to display an image using fetch
 4. Backend service endpoints
     - stores current user on server
-    - endpoints for ratings for recipes
+    - endpoints for recipes (placeholders-->still need database)
 5. Frontend calls service endpoints
-    - used fetch functions (login/logout
+    - used fetch functions (login/logout)
 
 ## Startup React:
 Used JavaScript and React for a single user with placeholders for future developments
