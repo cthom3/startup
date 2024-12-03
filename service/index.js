@@ -4,6 +4,7 @@ const app = express();
 
 let users = {};
 let ratings = [];
+let recipes = {};
 
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
 app.use(express.json());
@@ -52,6 +53,15 @@ apiRouter.post('/rating', (req, res) => {
     res.send(ratings);
 });
 
+apiRouter.get('/recipes', (_req, res)=> {
+    res.send(recipes);
+});
+
+apiRouter.post('/recipe', (req,res)=> {
+    recipes=updateRecipes(req.body, recipes);
+    res.send(recipes);
+});
+
 app.use((_req, res) => {
     res.sendFile ('index.html', {root: 'public'});
 });
@@ -76,4 +86,9 @@ function updateRatings (newRating, ratings) {
         ratings.length = 10;
     }
     return ratings;
+}
+
+function updateRecipes (newRecipe, recipes) {
+    recipes.push(newRecipe);
+    return recipes;
 }

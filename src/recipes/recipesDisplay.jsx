@@ -21,10 +21,11 @@ export function RecipesDisplay(props) {
     const [imagePreview,setImagePreview]=React.useState(null);
     const [isModalOpen, setIsModalOpen]=React.useState(false);
     React.useEffect(()=> {
-        const recipeCardsText=localStorage.getItem('recipecards');
-        if (recipeCardsText){
-            setRecipecards(JSON.parse(recipeCardsText));
-        }
+        fetch('/api/recipes')
+            .then((response)=>response.json())
+            .then((recipes) =>{
+                setRecipecards(recipes);
+            });
     },[]);
 
     React.useEffect(()=> {
