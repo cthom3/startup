@@ -1088,5 +1088,27 @@ Debug services in development environment use viteconfig file that routes certai
           - click messages tab to see WebSocket messages
           - send socket.send('I am listening');
           - causes second server breakpoint
-64. 
-65. 
+64. UI Testing
+    - Test driven development (TDD) great but difficult to use for UI b/c need browser
+    - browsers are different, viewport sizes change, code is asynchronous, network disruptions, humans do unexpected things
+    - Automating the browser --> Playwright
+          - place hooks in browser
+          - varying frameworks (need them to be reliable)
+          - Playwright (backed by Microsoft and can use in VS code, runs Node.js, least flaky)
+          - make a test script (using await expect functions and save as ____.spec.ts), get extension
+          - Application needs to be running in order to test
+    - Testing Various Devices --> BrowserStack
+          - BrowserStack --> pick physical devices to run interactively
+          - connects browser interface to physical device in data center
+          - reproduce user reported problems or validate implementation on specific device
+65. Endpoint Testing
+    - Testing services is easier than UI testing b/c no browser
+    - lots of packages --> using Jest
+    - to all Jest to start up server--> export express app from server.js and import to index.js (break it apart so we can start server in normal and testing environments)
+    - Jest automatically imports itself when discovers a test file (___.test.js)
+    - test function has description as first parameter, second is function to call (use expect and toBe functions)
+    - change scripts section of package.json to run with jest, use npm run test to execute test
+    - Need supertest to test endpoints (to make HTTP requests without sending over network)
+    - pass app to supertest request function, verb, and endpoint path, add expect functions
+66. 
+67. 
