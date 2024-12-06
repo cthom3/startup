@@ -102,25 +102,3 @@ const httpService=app.listen(port, ()=> {
     console.log(`Listening on port ${port}`);
 });
 
-// function updateRatings (newRating, ratings) {
-//     let found = false;
-//     for (const [i, prevRating] of ratings.entries()) {
-//         if (newRating.rating > prevRating.rating){
-//             ratings.splice(i,0,newRating);
-//             found = true;
-//             break;
-//         }
-//     }
-//     if (!found) {
-//         ratings.push(newRating);
-//     }
-//     if (ratings.length >10){
-//         ratings.length = 10;
-//     }
-//     return ratings;
-// }
-
-// function updateRecipes (newRecipe, recipes) {
-//     recipes.push(newRecipe);
-//     return recipes;
-// }
