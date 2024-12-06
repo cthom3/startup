@@ -45,10 +45,24 @@ async function addRecipe(recipe){
     return recipeCollection.insertOne(recipe);
 }
 
+function getRatings(){
+    const query = {};
+    const cursor = ratingCollection.find(query);
+    return cursor.toArray();
+}
+
+function getRecipes(){
+    const query = {};
+    const cursor = recipeCollection.find(query);
+    return cursor.toArray();
+}
+
 module.exports = {
     getUser,
     getUserByToken,
     createUser,
     addRating,
     addRecipe,
+    getRatings,
+    getRecipes,
 };
