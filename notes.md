@@ -1183,6 +1183,42 @@ Debug services in development environment use viteconfig file that routes certai
     - use unions to define possible values for a new type (ex. type AuthState = 'unknown' | 'authenticated' | 'unauthenticated';)
     - use unions to define possible types for a variable
     - npm install --save-dev typescript (for existing app)
-    - create tsconfig.json file to define interaction
-70. 
-71. 
+    - create tsconfig.json file to define interaction (define rootDir and outDir)
+70. Performance monitoring
+    - performance affects user satisfaction (1 second leads to less view, satisfaction, and conversions)
+    - application should load in 1 second
+    - latency -->delay users experience befoe request satisfied
+    - Browser application latency
+          - impacted by user device speed, amount of data, time complexity of process algorithm (requests take time)
+          - make as asynchronous as possible (done in background)
+          - Reduce impact of file size and HTTP requests
+              - use compression of files
+              - reduce quality of image/videos
+              - minify JS and CSS (remove whitespace, smaller variable names)
+              - Use HTTP/2 or HTTP/3 so HTTP headers are compressed
+              - reduce number of requests by combining them (eliminate duplicate fields, decreased overhead)
+     - Network latency
+           - impacted by amount of data sent, amount of data user can recieve (bandwidth), distance data has to travel
+           - reduce number of bytes sent to user
+           - global latency is a problem (add time as it is further)
+           - mitigate this by hosting application files in data centers near users (host in lots of locations across the world)
+    - Service endpoint latency
+          - impacted by number of requests made and amount takes to process each request
+          - usually a function in app blocked until data is returned or request finished-->want to reduce this as much as possible
+     - Performance Tools
+           - Chrome network tab--> network requests and time necessary, clear cache so it is clear
+           - Also use this to simulate low bandwidth connections (important to throttle while testing)
+           - Chrome Lighthouse--> runs analysis of application
+           - Performance tab--> for frontend, shows time intervals
+           - Do global speed test 
+71. UX design
+    - UX-->user experience
+    - consider why user uses it, how they want to interact, visual appeal, ease of use
+    - consistency especially following current trends (use web framework)
+    - navigation controls
+          - app controls-->user settings, payment, help
+          - device controls --> back, next, home
+          - breadcrumb--> path of user's walk through the application
+          - common actions--> direct links to location based on current view
+72. 
+73. 
