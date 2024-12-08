@@ -1,7 +1,7 @@
 import React from 'react';
 import './ratings.css';
 
-export function Recommendations(){
+export function Ratings(){
     const [ratings, setRatings]= React.useState ([]);
 
     React.useEffect(()=> {
