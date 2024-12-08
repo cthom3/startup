@@ -1,5 +1,5 @@
 import React from 'react';
-import './recommendations.css';
+import './ratings.css';
 
 export function Recommendations(){
     const [ratings, setRatings]= React.useState ([]);
