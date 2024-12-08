@@ -1110,5 +1110,115 @@ Debug services in development environment use viteconfig file that routes certai
     - change scripts section of package.json to run with jest, use npm run test to execute test
     - Need supertest to test endpoints (to make HTTP requests without sending over network)
     - pass app to supertest request function, verb, and endpoint path, add expect functions
-66. 
-67. 
+66. Security Overview
+    - ssh to open console and see authorization log--> all attempts to create session (sudo less +G /var/log/auth.log)
+    - use whois utility to see where originate
+    - attackers will exploit and try password on other pages
+    - Web application security (AppSec)--> prevent vulnerabilities within end-user application
+    - Hacking --> make something do what it's not supposed to do
+    - Exploit --> code/input takes advantage of programming or configuration flaw
+    - Attack Vector--> method to penetrate and exploit a system
+    - Attack Surface--> exposed parts of system that an attacker can access (ports, service endpoints)
+    - Attack Payload--> actual code or data from hacker to system
+    - Input sanitization--> Cleaning input data
+    - Black box testing--> test w/o knowledge of internals
+    - White box testing--> test w/ knowledge of internals
+    - Penetration testing-->attempting to access in ways not anticipated
+    - Mitigation--> reduce threat
+    - Motivation for attackers--> disruption, data exfiltration (leverage info), resource consumption (use computing resources for other things)
+    - Common hacking techniques
+          - Injection (query to get to database)
+          - Cross-site Scripting (malicious code)
+          - Denial of Service (delete database, make program crash, or give more requests then can handle)
+          - Credential Stuffing (use passwords from previous attack)
+          - Social engineering (twist helping to gain access/info)
+    - Ways to protect: sanitize input data, logging, traps, educate, reduce attack surfaces, layered security, least required access policy, safeguard credentials, public review
+67. OWASP
+    - Open Web Application Security Project--> Top 10 list of risks
+    1. Broken Access Control
+        - does not enforce permissions on users (admin controls mixed up)
+        - browser app code restricts access by disabling UI, enforced by application service
+        - attacker could change URL to point to app settings URL--> mitigate by strict access enforcement at service level and clearly defined roles and elevation paths
+    2. Cryptographic Failures
+        - sensitive data accessible w/o encryption, w/ weak encryption, or protections ignored
+        - some are ineffective or failure when app does not validate web certificate
+        - mitigate: strong encryption of ALL data, update encryption algorithms, use cryptographic safeguards
+    3. Injection
+        - attacker allowed to supply data often in unexpected way (put in SQL database command into password)
+        - mitigations: sanitize input, use database prepared statements, restrict execution rights, limit output
+    4. Insecure Design
+        - architectural flaws unique to individual systems
+        - unexpected uses of logic that controls functionality
+        - Mitigations: integration testing, strict access control, security education, security design pattern usages, scenario reviews
+    5. Security Misconfiguration
+        - exploit configuration (default passwords, not updating softward, exposing config settings, enabling unsecured remote config)
+        - Mitigations: configuration reviews, setting defaults to disable all access, automated configuration audits, multiple layers of access for remote configuration
+    6. Vulnerable and Outdated Components
+        - older app, more likely to have attacks b/c costly to maintain and keep updated
+        - packages become out of date or no longer supported-->becomes vulnerable (often ignored)
+        - Mitigations: Keep manifest of versions of software, review security bulletins, update software regulartly, require components to be up to date, replace unsupported software
+    7. Identification and Authentication Failures
+        - user identity can be impersonated (allowed to continue to guess password, passwords exposed, weak password recovery process)
+        - Mitigations: rate limiting requests, manage credentials, multifactor authentication, authentication recovery
+    8. Software and Data Integrity Failure
+        - allow external software, processes or data to compromise application
+        - can happen with open source or commercially produced packages without security audit
+        - attacker can change package in order to obtain data
+        - Mitigations: use only trusted package repositiories, use own vetted repository, audit updates to 3rd party packages and data sources
+    9. Security Logging and Monitoring Failures
+        - attackers often delete or alter logs and use smoke screens
+        - secure system-->store logs that are accessible, immutable, information to detect intrusion and have analysis
+        - Mitigations: real time log processing, automated alerts for metric threshold violations, periodic log reviews, visual dashboards for key indicators
+    10. Server Side Request Forgery (SSRF)
+        - attack makes application service make unintended internal requests to expose data
+        - ex. could change URL to access other information
+        - Mitigations: Sanitizing returned data, not returning data, whitelisting accessible domaints, rejecting HTTP redirects
+69. TypeScript
+    - static type checking in JS
+    - generated long before code seen by user
+    - define types for function parameterss and types of object properties
+    - interface used to define collection of parameters and types
+    - warns of unintitalized variable uses
+    - cast with subclass with querySelector<HTMLElement>()
+    - use unions to define possible values for a new type (ex. type AuthState = 'unknown' | 'authenticated' | 'unauthenticated';)
+    - use unions to define possible types for a variable
+    - npm install --save-dev typescript (for existing app)
+    - create tsconfig.json file to define interaction (define rootDir and outDir)
+70. Performance monitoring
+    - performance affects user satisfaction (1 second leads to less view, satisfaction, and conversions)
+    - application should load in 1 second
+    - latency -->delay users experience befoe request satisfied
+    - Browser application latency
+          - impacted by user device speed, amount of data, time complexity of process algorithm (requests take time)
+          - make as asynchronous as possible (done in background)
+          - Reduce impact of file size and HTTP requests
+              - use compression of files
+              - reduce quality of image/videos
+              - minify JS and CSS (remove whitespace, smaller variable names)
+              - Use HTTP/2 or HTTP/3 so HTTP headers are compressed
+              - reduce number of requests by combining them (eliminate duplicate fields, decreased overhead)
+     - Network latency
+           - impacted by amount of data sent, amount of data user can recieve (bandwidth), distance data has to travel
+           - reduce number of bytes sent to user
+           - global latency is a problem (add time as it is further)
+           - mitigate this by hosting application files in data centers near users (host in lots of locations across the world)
+    - Service endpoint latency
+          - impacted by number of requests made and amount takes to process each request
+          - usually a function in app blocked until data is returned or request finished-->want to reduce this as much as possible
+     - Performance Tools
+           - Chrome network tab--> network requests and time necessary, clear cache so it is clear
+           - Also use this to simulate low bandwidth connections (important to throttle while testing)
+           - Chrome Lighthouse--> runs analysis of application
+           - Performance tab--> for frontend, shows time intervals
+           - Do global speed test 
+71. UX design
+    - UX-->user experience
+    - consider why user uses it, how they want to interact, visual appeal, ease of use
+    - consistency especially following current trends (use web framework)
+    - navigation controls
+          - app controls-->user settings, payment, help
+          - device controls --> back, next, home
+          - breadcrumb--> path of user's walk through the application
+          - common actions--> direct links to location based on current view
+72. 
+73. 
