@@ -46,14 +46,14 @@ async function addRecipe(recipe){
 }
 
 function getRatings(){
-    const query = {rating:{}};
-    const cursor = ratingCollection.find(query);
+    // const query = {rating:{}};
+    const cursor = ratingCollection.find();
     return cursor.toArray();
 }
 
 function getRecipes(){
-    const query = {recipe:{}};
-    const cursor = recipeCollection.find(query);
+    // const query = {recipe:{}};
+    const cursor = recipeCollection.find();
     return cursor.toArray();
 }
 
