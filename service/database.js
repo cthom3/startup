@@ -46,13 +46,13 @@ async function addRecipe(recipe){
 }
 
 function getRatings(){
-    const query = {rating:{}};
+    const query = {rating:{ $gt:"0", $lt:"5"}};
     const cursor = ratingCollection.find(query);
     return cursor.toArray();
 }
 
 function getRecipes(){
-    const query = {recipe:{}};
+    const query = {rating:{$gt:"0", $lt:"5"}};
     const cursor = recipeCollection.find(query);
     return cursor.toArray();
 }
