@@ -63,19 +63,19 @@ secureApiRouter.get('/ratings', async (req, res)=> {
     res.send(ratings);
 });
 
-secureapiRouter.post('/rating', async (req, res) => {
+secureApiRouter.post('/rating', async (req, res) => {
     const rating={...req.body, ip: req.ip};
     await DB.addRating(rating);
     const ratings = await DB.getRatings();
     res.send(ratings);
 });
 
-secureapiRouter.get('/recipes', async (_req, res)=> {
+secureApiRouter.get('/recipes', async (req, res)=> {
     const recipes = await DB.getRecipes();
     res.send(recipes);
 });
 
-secureapiRouter.post('/recipe', async (req,res)=> {
+secureApiRouter.post('/recipe', async (req,res)=> {
     const recipe = {...req.body, ip:req.ip};
     await DB.addRecipe(recipe);
     const recipes=await DB.getRecipes();
