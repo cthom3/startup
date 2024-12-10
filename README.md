@@ -1,5 +1,17 @@
 # CS-260-Startup
 
+## Startup Login:
+1. New User Registration
+    - new user stored in database/can create new accounts
+2. Existing User Authentication and Logout
+    - user authenticated and has option to logout in account tab
+3. Store application data in MongoDB
+    - stores recipe information
+4. Stores and retrieves credentials in MongoDB
+    - stores user names and encrypted passwords
+5. Restricts application functionality based upon authentication
+    - can only see recipes if logged in
+      
 ## Startup Service:
 1. Node.js/Express HTTP service
     - Added service folder with index.js file
