@@ -1,16 +1,13 @@
 import React from 'react';
-import {Collapse} from 'react-collapse';
 import {WidthProvider, Responsive} from 'react-grid-layout';
 import {Button} from 'react-bootstrap';
 import './recipesDisplay.css';
 import ReactGridLayout from 'react-grid-layout';
-
 const ResponsiveReactGridLayout=WidthProvider(Responsive);
 
 export function RecipesDisplay(props) {
     const userName=props.userName;
     const [recipecards,setRecipecards]=React.useState([]);
-    const [collapsedSection,setCollapsedSection]=React.useState([]);
     const [newRecipe,setNewRecipe]=React.useState({
         name: '',
         image: '',
@@ -38,11 +35,7 @@ export function RecipesDisplay(props) {
 
     const AddRecipe =()=> {
         if (newRecipe.name && newRecipe.image && newRecipe.rating && newRecipe.link && newRecipe.category) {
-            const updatedRecipes={...recipecards};
-            if (!updatedRecipes[newRecipe.category]){
-                updatedRecipes[newRecipe.category]=[];
-            }
-            updatedRecipes[newRecipe.category].push(newRecipe);
+            const updatedRecipes=[...recipecards, newRecipe];
             saveRecipe(newRecipe);
             setRecipecards(updatedRecipes);
             setNewRecipe({name: '', image: '', rating: '', link: '', category: ''});
@@ -62,10 +55,6 @@ export function RecipesDisplay(props) {
         }
     };
 
-    const toggleSectionCollapse= (category) => {
-        setCollapsedSection((prev)=> ({...prev, [category]: !prev[category]}));
-    };
-
     const openModal=()=>{
         setIsModalOpen(true);
 
@@ -83,6 +72,8 @@ export function RecipesDisplay(props) {
 
     };
 
+    console.log(recipecards);
+
     return (
         <main className='container-fluid bg-secondary text-light'>
             <h1>
@@ -95,12 +86,12 @@ export function RecipesDisplay(props) {
                         <h2>Add a New Recipe</h2>
                         <input type="text" placeholder="Recipe Name" value={newRecipe.name} onChange={(e)=>setNewRecipe({...newRecipe, name:e.target.value})}/>
                         <input type="file" onChange={handleImageChange}/>
-                        {imagePreview &&(
-                            <div>
-                                <img src={imagePreview} width="20%"/>
-                            </div>
-                        )}
-                        <input type="text" placeholder="Rating (1-5)" value={newRecipe.rating} onChange={(e)=>setNewRecipe({...newRecipe, rating:e.target.value})}/>
+                            {imagePreview &&(
+                                <div>
+                                    <img src={imagePreview} width="20%"/>
+                                </div>
+                            )}
+                        <input type="number" placeholder="Rating (1-5)" value={newRecipe.rating} onChange={(e)=>setNewRecipe({...newRecipe, rating:parseFloat(e.target.value)})}/>
                         <input type="text" placeholder="Recipe Link" value={newRecipe.link} onChange={(e)=>setNewRecipe({...newRecipe, link:e.target.value})}/>
                         <input type="text" placeholder="Category" value={newRecipe.category} onChange={(e)=>setNewRecipe({...newRecipe, category:e.target.value})}/>
                         <Button onClick={AddRecipe}>Add Recipe</Button>
@@ -108,28 +99,26 @@ export function RecipesDisplay(props) {
                     </div>
                 </div>
             )}
-            {Object.keys(recipecards).map((category) =>(
-                <div key={category}>
-                    <Button variant="secondary" onClick={()=> toggleSectionCollapse(category)}>
-                        {collapsedSection[category]? '': ''}{category}
-                    </Button>
-                    <Collapse isOpened={!collapsedSection[category]}>
-                        <ResponsiveReactGridLayout
-                            {...gridLayoutConfig}
-                        >
-                            {recipecards[category].map((recipecard, index)=>(
-                                <div key={index} data-grid={{x:(index%4)*3, y:Math.floor(index/4)*4, w:3, h:3}}>
-                                    <img src={recipecard.image} alt={recipecard.name} width="70%"/>
-                                    <br />
-                                    <a className="link-dark" href={recipecard.link}>{recipecard.name}</a>
-                                    <br/>
-                                    <span className="text-dark">{recipecard.rating}</span>
-                                </div>
-                            ))}
-                        </ResponsiveReactGridLayout>
-                    </Collapse>
-                </div>
-            ))}
+            <ResponsiveReactGridLayout {...gridLayoutConfig}>
+                {recipecards.map((recipecard) =>(
+                    <div 
+                        key={recipecards.indexOf(recipecard)} 
+                        data-grid={{
+                            x:(recipecards.indexOf(recipecard)%4)*3, 
+                            y:Math.floor(recipecards.indexOf(recipecard)/4)*4, 
+                            w:3, 
+                            h:3
+                        }}
+                    >
+                        <img src={recipecard.image} alt={recipecard.name} width="70%"/>
+                        <br />
+                        <a className="link-dark" href={recipecard.link}>{recipecard.name}</a>
+                        <br/>
+                        <span className="text-dark">{recipecard.rating}</span>
+                    </div>
+                ))}
+            </ResponsiveReactGridLayout>
+
         </main>
     );
 }
