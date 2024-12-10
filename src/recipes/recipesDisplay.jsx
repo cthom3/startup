@@ -37,6 +37,7 @@ export function RecipesDisplay(props) {
         if (newRecipe.name && newRecipe.image && newRecipe.rating && newRecipe.link && newRecipe.category) {
             const updatedRecipes=[...recipecards, newRecipe];
             saveRecipe(newRecipe);
+            // uploadFile(newRecipe.image);
             setRecipecards(updatedRecipes);
             setNewRecipe({name: '', image: '', rating: '', link: '', category: ''});
             setImagePreview(null);
