@@ -1,6 +1,7 @@
 import React from 'react';
 import {WidthProvider, Responsive} from 'react-grid-layout';
 import {Button} from 'react-bootstrap';
+import {RatingEvent, RatingNotifier} from './ratingNotifier';
 import './recipesDisplay.css';
 import ReactGridLayout from 'react-grid-layout';
 const ResponsiveReactGridLayout=WidthProvider(Responsive);
@@ -31,6 +32,7 @@ export function RecipesDisplay(props) {
             headers: {'content-type': 'application/json'},
             body: JSON.stringify(newRecipe),
         });
+        RatingNotifier.broadcastEvent(userName,RatingEvent.End, newRecipe.name);
     }
 
     const AddRecipe =()=> {
