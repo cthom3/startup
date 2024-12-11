@@ -1,5 +1,5 @@
 import React from 'react';
-import {RatingEvent,RatingNotifier} from './gameNotifier';
+import {RatingEvent,RatingNotifier} from './ratingNotifier';
 
 export function User(props){
     const userName=props.userName;

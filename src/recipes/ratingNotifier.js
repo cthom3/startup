@@ -1,7 +1,6 @@
 const RatingEvent={
     System:'system',
     End: 'ratingEnd',
-    Start: 'ratingStart'
 };
 
 class EventMessage {
