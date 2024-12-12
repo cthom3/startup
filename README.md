@@ -1,6 +1,20 @@
 # CS-260-Startup
 
+## Startup Websocket:
+Note: Because of due dates, I deployed this section before the last one had been graded.
+I used WebSockets to notify all of new recipes being added
+1. Backend listens for WebSocket connection
+    - Completed
+2. Frontend makes WebSocket connection
+    - When connection made, displayed on recipes page
+3. Data sent over WebSocket connection
+    -
+4. WebSocket data displayed
+    -
+5. All visible elements working
+
 ## Startup Login:
+Note: Because of due dates, I deployed the next section before this section was graded.
 1. New User Registration
     - new user stored in database/can create new accounts
 2. Existing User Authentication and Logout
