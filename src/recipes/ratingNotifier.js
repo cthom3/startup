@@ -1,6 +1,7 @@
 const RatingEvent={
     System:'system',
     End: 'ratingEnd',
+    Start:'gameStart',
 };
 
 class EventMessage {
@@ -17,13 +18,13 @@ class RatingEventNotifier {
 
     constructor() {
         let port=window.location.port;
-        const protocol=window.location.protocol;
+        const protocol=window.location.protocol==='http:' ? 'ws' : 'wss';
         this.socket=new WebSocket(`${protocol}://${window.location.hostname}:${port}/ws`);
         this.socket.onopen=(event)=>{
-            this.receiveEvent(new EventMessage ('Comfort Cooking', RatingEvent.System, {msg: 'connected'}));
+            this.receiveEvent(new EventMessage ('',RatingEvent.System, {msg: 'connected'}));
         };
         this.socket.onclose=(event)=>{
-            this.receiveEvent(new EventMessage('Comfort Cooking', RatingEvent.System, {msg:'disconnected'}));
+            this.receiveEvent(new EventMessage('',RatingEvent.System, {msg:'disconnected'}));
         };
         this.socket.onmessage=async(msg)=>{
             try {
