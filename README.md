@@ -11,7 +11,7 @@ I used WebSockets to notify all of new recipes being added
     -
 4. WebSocket data displayed
     -
-5. All vissible elements working
+5. All visible elements working
 
 ## Startup Login:
 Note: Because of due dates, I deployed the next section before this section was graded.
