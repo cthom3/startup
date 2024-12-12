@@ -12,6 +12,7 @@ I used WebSockets to notify all of new recipes being added
 4. WebSocket data displayed
     - WebSocket messages are displayed at the top of the recipes page
 5. All visible elements working
+    - Everything except the images is working
 
 ## Startup Login:
 Note: Because of due dates, I deployed the next section before this section was graded.
