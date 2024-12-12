@@ -8,9 +8,9 @@ I used WebSockets to notify all of new recipes being added
 2. Frontend makes WebSocket connection
     - When connection made, displayed on recipes page
 3. Data sent over WebSocket connection
-    -
+    - When a recipe is added by another user, a message is sent to all other users
 4. WebSocket data displayed
-    -
+    - WebSocket messages are displayed at the top of the recipes page
 5. All visible elements working
 
 ## Startup Login:
