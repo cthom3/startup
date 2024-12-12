@@ -32,7 +32,7 @@ export function RecipesDisplay(props) {
             headers: {'content-type': 'application/json'},
             body: JSON.stringify(newRecipe),
         });
-        RatingNotifier.broadcastEvent(userName,RatingEvent.End, newRecipe.name);
+        RatingNotifier.broadcastEvent(userName,RatingEvent.End, newRecipe);
     }
 
     const AddRecipe =()=> {

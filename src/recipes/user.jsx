@@ -20,7 +20,7 @@ export function User(props){
         for (const[i,event] of events.entries()){
             let message='unknown';
             if (event.type === RatingEvent.End){
-                message=`added ${event.value.name}`;
+                message=` added ${event.value.name}`;
             }else if (event.type===RatingEvent.System){
                 message=event.value.msg;
             }
