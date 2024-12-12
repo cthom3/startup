@@ -53,7 +53,10 @@ function getRatings(){
 
 function getRecipes(){
     const query = {rating:{$gt:0, $lt:5}};
-    const cursor = recipeCollection.find(query);
+    const options = {
+        sort: {rating: -1 },
+    };
+    const cursor = recipeCollection.find(query,options);
     return cursor.toArray();
 }
 
