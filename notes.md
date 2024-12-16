@@ -926,6 +926,7 @@
     - in GraphQL only one endpoint (query endpoint)
     - downside of flexibility is that client has power to consume resources on server
 54. PM 2
+    - Linux daemon--> executes independent of user, pm2 is example, starts when computer is rebooted, can fork other processes
     - To keep programs running after shutdown, register as daemon
     - PM 2 has web services continue running as a daemon and easy way to start/stop services
     - should not need to touch files but if services not running, commands
