@@ -561,7 +561,7 @@
     - Types: Vue (HTML, CSS, JAvaScript in single file), Svelte (same as Vue but requires transpiler instead of DOM),REact (JAvaScript and HTML in component format with CSS outside the file, componenet leverages functionaligy of JavaScript, represented as function or class)
     - Angular component (defines what JavaScript, HTML, and CSS are combined together, strong separation of files)
     - virtual DOM (shadow DOM), takes copyonly in memory, really fast, changes happen in here first (make new tree), finds diff between and then only changes the diff in web browser tree, constantly watching components to see what changes
-35. React (JSX)
+35. React (JSX) JavaScript XML
     - Combines javascript and html (Babel talks between JSX to make JS)
     - Use in Codepen if select Babel as JavaScript processor
     - less html used within document
