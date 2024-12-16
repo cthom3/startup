@@ -540,6 +540,7 @@
           - node index.js
     - can run node in interpretive mode by executing without parameters (just type "node") and then typing JavaScript code directly into the interpreter
     - helpful to use packages--> install pacakges locally with NPM (Node Package Manager) and then include require statement in code that references the pacakge name
+    - NVM (Node Version Manager)
     - first initialize code to use NPM
           - create directory that will contian JavaScript
           - run npm init (return to accept defaults) or put -y at end
