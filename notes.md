@@ -790,6 +790,9 @@
           - Client then caches the cookie and returns it as HTTP header back to server on subsequent requests
           - Allows server to remember things about language, authentication
           - Allows servers to track and share what user does
+          - "Secure cookie"--> only sent to server with encrypted request over HTTPS (expcept on localhost), man-in-the-middle attackers can't access it easily
+          - "Http-only cookie"--> can't be accessed by JavaScript, only accessed when it reaches the server, for cooies that persist user sessions
+          - "Same-site cookie"--> lets servers specify whether/when cookies are sent with cross-site requests, helps prevents leakage of information, preserves user privacy, provides protection against cross-site request forgery attacks
 49. Fetch
     - fetch API-->preferred way to make HTTP requests
     - "fetch" function is built into browser's JavaScript runtime
