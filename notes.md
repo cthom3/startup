@@ -592,6 +592,11 @@
     - if specify an empty array [] as hook dependency--> only called when component is first rendered
     - hooks can only be used in function style componenets and must be called at top scope of function (cannot be inside loop or conditional)
     - This allows hooks to always be called in the same order when component rendered
+    - State Hook--> remember info (useState, useReducer)
+    - Context Hook-->receive info from distant parents w/o passing as props (useContext)
+    - Ref Hook-->hold info that it's used for rendering (like DOM node or timeout ID), updating this does not re-render component, usedful when work with non-React systems (APIS), (useRef-->often holds DOM node, useImperativeHandle)
+    - Effect Hook-->connect to and synchronize with external systems (dealing with network, browser DOM, etc) -->useEffect
+    - Performance Hook-->to skip calculations and unnecessary re-rendering (useMemo-->cache result of expensive calculation, useCallback-->cache function definition before passing to optimized component)
 38. Router
     - web framework router provides essential functionality for single-page applications
     - browser only loads one HTML and JavaScript manipulates the DOM to give it the appearance of multiple pages
