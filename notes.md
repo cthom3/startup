@@ -567,6 +567,7 @@
     - Use in Codepen if select Babel as JavaScript processor
     - less html used within document
     - React.createElement (generates DOM elements and monitors the data for changes, when changes occur, React triggers dependet changes)
+    - renders HTML from Javascript, componentizes HTML, allows for composability of HTML
 36. Components
     - React components allow modularization of functionality of page
     - enables code reuse
